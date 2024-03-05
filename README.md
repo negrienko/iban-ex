@@ -1,0 +1,21 @@
+# IbanEx
+
+Library for working with IBAN numbers (parsing, validating and checking and formatting)
+
+## Installation
+
+If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+by adding `iban_ex` to your list of dependencies in `mix.exs`:
+
+```elixir
+def deps do
+  [
+    {:iban_ex, "~> 0.1.0"}
+  ]
+end
+```
+
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
+and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
+be found at <https://hexdocs.pm/iban_ex>.
+
