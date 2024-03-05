@@ -1,7 +1,7 @@
 defmodule IbanEx.MixProject do
   use Mix.Project
 
-  @source_url "https://g.tulz.dev/negrienko/iban-ex"
+  @source_url "https://g.tulz.dev/opensource/iban-ex"
   @version "0.1.0"
 
   def project do
@@ -59,8 +59,6 @@ defmodule IbanEx.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:bankster, "~> 0.4.0"},
-
       # Checks
       {:lettuce, "~> 0.3.0", only: :dev},
       {:ex_check, "~> 0.14.0", only: ~w(dev test)a, runtime: false},
