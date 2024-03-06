@@ -27,6 +27,8 @@ defimpl IbanEx.Deserialize, for: Map do
           country_code: _country_code,
           check_digits: _check_sum_digits,
           bank_code: _bank_code,
+          branch_code: _branch_code,
+          national_check: _national_check,
           account_number: _account_number
         } = map
       ) do
@@ -38,6 +40,8 @@ defimpl IbanEx.Deserialize, for: Map do
           "country_code" => _country_code,
           "check_digits" => _check_sum_digits,
           "bank_code" => _bank_code,
+          "branch_code" => _branch_code,
+          "national_check" => _national_check,
           "account_number" => _account_number
         } = map
       ) do
@@ -46,4 +50,12 @@ defimpl IbanEx.Deserialize, for: Map do
   end
 
   def to_iban(map) when is_map(map), do: {:error, :can_not_parse_map}
+end
+
+defimpl IbanEx.Deserialize, for: List do
+  alias IbanEx.Iban
+  @type iban_or_error() :: IbanEx.Iban.t() | {:error, :can_not_parse_map}
+
+  @spec to_iban(list()) :: iban_or_error()
+  def to_iban(list), do: struct(Iban, Map.new(list))
 end
