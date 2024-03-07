@@ -12,30 +12,32 @@ In just a few letters and numbers, the IBAN captures all of the country, bank, a
 
 ### Successfull case to parse IBAN
 
-Parse string with valid formatted IBAN from supported country
+#### Parse string with valid formatted IBAN from supported country
 
-```elixir 
+```elixir
 {:ok, iban} = "FI2112345600000785" |> IbanEx.Parser.parse()
 IO.inspect(iban)
 IbanEx.Iban.pretty(iban)
 ```
 
-#### Response
+#### Success case responses
 
-    %IbanEx.Iban{
-      country_code: "FI",
-      check_digits: "21",
-      bank_code: "123456",
-      branch_code: nil,
-      national_check: "5",
-      account_number: "0000078"
-    }
-    
-    "FI 21 123456 0000078 5"
+```elixir
+%IbanEx.Iban{
+  country_code: "FI",
+  check_digits: "21",
+  bank_code: "123456",
+  branch_code: nil,
+  national_check: "5",
+  account_number: "0000078"
+}
+
+"FI 21 123456 0000078 5"
+```
 
 ### Errors cases of IBAN parsing
 
-Parse strings with invalid formatted IBANs from unsupported and supported countries
+#### Parse strings with invalid formatted IBANs from unsupported and supported countries
 
 ```elixir
 {:error, unsupported_country_code} = "AZ21NABZ00000000137010001944" |> IbanEx.Parser.parse()
@@ -48,22 +50,22 @@ IO.inspect(IbanEx.Error.message(invalid_length_code), label: invalid_length_code
 IO.inspect(IbanEx.Error.message(invalid_checksum), label: invalid_checksum)
 ```
 
-#### Response
+#### Error cases response
 
-    unsupported_country_code: "Unsupported country code"
-    invalid_length: "IBAN violates the required length"
-    invalid_checksum: "IBAN's checksum is invalid"
-
+```elixir
+unsupported_country_code: "Unsupported country code"
+invalid_length: "IBAN violates the required length"
+invalid_checksum: "IBAN's checksum is invalid"
+```
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `iban_ex` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `iban_ex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:iban_ex, "~> 0.1.0"}
+    {:iban_ex, "~> 0.1.1"}
   ]
 end
 ```
@@ -71,4 +73,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/iban_ex>.
-

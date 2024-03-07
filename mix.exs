@@ -2,7 +2,7 @@ defmodule IbanEx.MixProject do
   use Mix.Project
 
   @source_url "https://g.tulz.dev/opensource/iban-ex"
-  @version "0.1.0"
+  @version "0.1.1"
 
   def project do
     [
@@ -68,7 +68,6 @@ defmodule IbanEx.MixProject do
       {:ex_doc, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:sobelow, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:mix_audit, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
-      {:esbuild, "~> 0.7.0", runtime: Mix.env() == :dev},
       {:observer_cli, "~> 1.7.4", only: :dev, runtime: false},
       {:elixir_sense, github: "elixir-lsp/elixir_sense", only: ~w(dev)a}
 
