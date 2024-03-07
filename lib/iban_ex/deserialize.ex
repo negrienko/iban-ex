@@ -7,8 +7,8 @@ end
 defimpl IbanEx.Deserialize, for: [BitString, String] do
   alias IbanEx.{Parser, Error}
   @type iban_or_error() :: IbanEx.Iban.t() | {:error, atom()}
+  @spec to_iban(binary()) :: iban_or_error()
   @spec to_iban(String.t()) :: iban_or_error()
-  @spec to_iban(binary()) :: IbanEx.Iban.t()
   def to_iban(string) do
     case Parser.parse(string) do
       {:ok, iban} -> iban

@@ -1,7 +1,5 @@
 defmodule IbanEx.Error do
-  @moduledoc """
-
-  """
+  @moduledoc false
 
   @type error() ::
           :unsupported_country_code

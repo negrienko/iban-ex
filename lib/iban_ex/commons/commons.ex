@@ -1,4 +1,6 @@
 defmodule IbanEx.Commons do
+  @moduledoc false
+
   @spec normalize(binary()) :: binary()
   def normalize(string) do
     string

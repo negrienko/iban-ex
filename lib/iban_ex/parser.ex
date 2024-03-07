@@ -1,4 +1,6 @@
 defmodule IbanEx.Parser do
+  @moduledoc false
+
   alias IbanEx.{Country, Iban, Validator}
   import IbanEx.Commons, only: [normalize_and_slice: 2]
 
@@ -9,20 +11,27 @@ defmodule IbanEx.Parser do
 
   @spec parse({:ok, String.t()} | String.t()) :: iban_or_error()
   def parse({:ok, iban_string}), do: parse(iban_string)
+
   def parse(iban_string) do
-    with {:ok, valid_iban} <- Validator.validate(iban_string) do
-      iban_map = %{
-        country_code: country_code(valid_iban),
-        check_digits: check_digits(valid_iban),
-      }
+    case Validator.validate(iban_string) do
+      {:ok, valid_iban} ->
+        iban_map = %{
+          country_code: country_code(valid_iban),
+          check_digits: check_digits(valid_iban)
+        }
 
-      regex = Country.country_module(iban_map.country_code).rule()
-      bban = bban(iban_string)
-      bban_map = for {key, val} <- Regex.named_captures(regex, bban), into: %{}, do: {String.to_atom(key), val}
+        regex = Country.country_module(iban_map.country_code).rule()
+        bban = bban(iban_string)
 
-      {:ok, struct(Iban, Map.merge(iban_map, bban_map))}
-    else
-      {:error, error_type} -> {:error, error_type}
+        bban_map =
+          for {key, val} <- Regex.named_captures(regex, bban),
+              into: %{},
+              do: {String.to_atom(key), val}
+
+        {:ok, struct(Iban, Map.merge(iban_map, bban_map))}
+
+      {:error, error_type} ->
+        {:error, error_type}
     end
   end
 

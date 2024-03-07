@@ -1,9 +1,11 @@
 defmodule IbanEx.Validator do
+  @moduledoc false
+
   alias IbanEx.{Country, Parser}
   alias IbanEx.Validator.Replacements
   import IbanEx.Commons, only: [normalize: 1]
 
-  @spec validate(String.t()) :: {:ok, String.t()} | {:error}
+  @spec validate(String.t()) :: {:ok, String.t()} | {:error, Atom.t()}
   def validate(iban) do
     cond do
       iban_violates_format?(iban) ->

@@ -1,4 +1,6 @@
 defmodule IbanEx.Serialize do
+  @moduledoc false
+
   alias IbanEx.{Iban, Formatter}
 
   @spec to_string(Iban.t()) :: String.t()

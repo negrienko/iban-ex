@@ -1,4 +1,6 @@
 defmodule IbanEx.Country do
+  @moduledoc false
+
   import IbanEx.Commons, only: [normalize: 1]
 
   @type country_code() :: <<_::16>> | atom()

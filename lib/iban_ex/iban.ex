@@ -1,4 +1,6 @@
 defmodule IbanEx.Iban do
+  @moduledoc false
+
   alias IbanEx.Formatter
   alias IbanEx.{Serialize}
 

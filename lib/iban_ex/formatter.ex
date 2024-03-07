@@ -1,4 +1,6 @@
 defmodule IbanEx.Formatter do
+  @moduledoc false
+
   alias IbanEx.Country
   import IbanEx.Commons, only: [normalize: 1]
 
@@ -28,7 +30,7 @@ defmodule IbanEx.Formatter do
 
   def format(iban, :pretty) do
     country_module = Country.country_module(iban.country_code)
-    country_module.to_s(iban)
+    country_module.to_string(iban)
   end
 
   def format(iban, :splitted) do
