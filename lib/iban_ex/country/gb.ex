@@ -3,23 +3,15 @@ defmodule IbanEx.Country.GB do
   United Kingdom IBAN parsing rules
   """
 
-  alias IbanEx.Iban
-
-  @behaviour IbanEx.Country.Template
-
   @size 22
-
   @rule ~r/^(?<bank_code>[A-Z]{4})(?<branch_code>[0-9]{6})(?<account_number>[0-9]{8})$/i
 
-  @spec size() :: 22
-  def size(), do: @size
+  use IbanEx.Country.Template
 
-  @spec rule() :: Regex.t()
-  def rule(), do: @rule
-
-  @spec to_s(Iban.t()) :: binary()
-  @spec to_s(Iban.t(), binary()) :: binary()
-  def to_s(
+  @impl IbanEx.Country.Template
+  @spec to_string(Iban.t()) :: binary()
+  @spec to_string(Iban.t(), binary()) :: binary()
+  def to_string(
         %Iban{
           country_code: country_code,
           check_digits: check_digits,
