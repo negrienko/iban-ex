@@ -1,6 +1,13 @@
 defmodule IbanEx.Country.PT do
   @moduledoc """
   Portugal IBAN parsing rules
+
+  ## Examples
+
+    iex> %IbanEx.Iban{country_code: "PT", check_digits: "50", bank_code: "0002", branch_code: "0123", national_check: "54", account_number: "12345678901"}
+    iex> |> IbanEx.Country.PT.to_string()
+    "PT 50 0002 0123 12345678901 54"
+
   """
 
   @size 25

@@ -1,6 +1,13 @@
 defmodule IbanEx.Country.LT do
   @moduledoc """
   Lithuanian IBAN parsing rules
+
+  ## Examples
+
+    iex> %IbanEx.Iban{country_code: "LT", check_digits: "12", bank_code: "10000", branch_code: nil, national_check: nil, account_number: "11101001000"}
+    iex> |> IbanEx.Country.LT.to_string()
+    "LT 12 10000 11101001000"
+
   """
 
   @size 20

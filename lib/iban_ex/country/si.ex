@@ -1,19 +1,20 @@
-defmodule IbanEx.Country.EE do
+defmodule IbanEx.Country.SI do
   @moduledoc """
-  Estonian IBAN parsing rules
+  Slovenia IBAN parsing rules
 
   ## Examples
 
-    iex> %IbanEx.Iban{country_code: "EE", check_digits: "38", bank_code: "22", branch_code: "00", national_check: "5", account_number: "22102014568"}
-    iex> |> IbanEx.Country.EE.to_string()
-    "EE 38 22 00 22102014568 5"
+    iex> %IbanEx.Iban{country_code: "SI", check_digits: "56", bank_code: "26", branch_code: "330", national_check: "86", account_number: "00120390"}
+    iex> |> IbanEx.Country.SI.to_string()
+    "SI 56 26 330 00120390 86"
 
   """
 
-  @size 20
-  @rule ~r/^(?<bank_code>[0-9]{2})(?<branch_code>[0-9]{2})(?<account_number>[0-9]{11})(?<national_check>[0-9]{1})$/i
+  @size 19
+  @rule ~r/^(?<bank_code>[0-9]{2})(?<branch_code>[0-9]{3})(?<account_number>[0-9]{8})(?<national_check>[0-9]{2})$/i
 
   use IbanEx.Country.Template
+
 
   @impl IbanEx.Country.Template
   @spec to_string(Iban.t()) :: binary()
@@ -32,4 +33,5 @@ defmodule IbanEx.Country.EE do
     [country_code, check_digits, bank_code, branch_code, account_number, national_check]
     |> Enum.join(joiner)
   end
+
 end

@@ -1,17 +1,17 @@
-defmodule IbanEx.Country.MT do
+defmodule IbanEx.Country.GR do
   @moduledoc """
-  Malta IBAN parsing rules
+  Greece IBAN parsing rules
 
   ## Examples
 
-    iex> %IbanEx.Iban{country_code: "MT", check_digits: "84", bank_code: "MALT", branch_code: "01100", national_check: nil, account_number: "0012345MTLCAST001S"}
-    iex> |> IbanEx.Country.MT.to_string()
-    "MT 84 MALT 01100 0012345MTLCAST001S"
+    iex> %IbanEx.Iban{country_code: "GR", check_digits: "16", bank_code: "011", branch_code: "0125", national_check: nil, account_number: "0000000012300695"}
+    iex> |> IbanEx.Country.GR.to_string()
+    "GR 16 011 0125 0000000012300695"
 
   """
 
-  @size 31
-  @rule ~r/^(?<bank_code>[A-Z]{4})(?<branch_code>[0-9]{5})(?<account_number>[0-9A-Z]{18})$/i
+  @size 27
+  @rule ~r/^(?<bank_code>[0-9]{3})(?<branch_code>[0-9]{4})(?<account_number>[0-9A-Z]{16})$/i
 
   use IbanEx.Country.Template
 

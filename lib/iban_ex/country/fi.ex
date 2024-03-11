@@ -1,6 +1,13 @@
 defmodule IbanEx.Country.FI do
   @moduledoc """
   Finland IBAN parsing rules
+
+  ## Examples
+
+    iex> %IbanEx.Iban{country_code: "FI", check_digits: "21", bank_code: "123456", branch_code: nil, national_check: "5", account_number: "0000078"}
+    iex> |> IbanEx.Country.FI.to_string()
+    "FI 21 123456 0000078 5"
+
   """
 
   @size 18

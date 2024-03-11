@@ -15,29 +15,47 @@ defmodule IbanEx.Country do
     "CZ" => IbanEx.Country.CZ,
     "DE" => IbanEx.Country.DE,
     "DK" => IbanEx.Country.DK,
-    "ES" => IbanEx.Country.ES,
     "EE" => IbanEx.Country.EE,
-    "FR" => IbanEx.Country.FR,
+    "ES" => IbanEx.Country.ES,
     "FI" => IbanEx.Country.FI,
+    "FR" => IbanEx.Country.FR,
     "GB" => IbanEx.Country.GB,
+    "GI" => IbanEx.Country.GI,
+    "GR" => IbanEx.Country.GR,
     "HR" => IbanEx.Country.HR,
+    "HU" => IbanEx.Country.HU,
+    "IE" => IbanEx.Country.IE,
+    "IT" => IbanEx.Country.IT,
+    "LI" => IbanEx.Country.LI,
     "LT" => IbanEx.Country.LT,
     "LU" => IbanEx.Country.LU,
     "LV" => IbanEx.Country.LV,
+    "MC" => IbanEx.Country.MC,
     "MT" => IbanEx.Country.MT,
     "NL" => IbanEx.Country.NL,
+    "NO" => IbanEx.Country.NO,
     "PL" => IbanEx.Country.PL,
     "PT" => IbanEx.Country.PT,
-    "UA" => IbanEx.Country.UA
+    "RO" => IbanEx.Country.RO,
+    "SE" => IbanEx.Country.SE,
+    "SM" => IbanEx.Country.SM,
+    "SI" => IbanEx.Country.SI,
+    "SK" => IbanEx.Country.SK,
+    "UA" => IbanEx.Country.UA,
+    "VA" => IbanEx.Country.VA
   }
 
   @supported_country_codes Map.keys(@supported_countries)
+  @supported_country_modules Map.values(@supported_countries)
 
   @spec supported_countries() :: map()
   defp supported_countries(), do: @supported_countries
 
   @spec supported_country_codes() :: [country_code()] | []
   def supported_country_codes(), do: @supported_country_codes
+
+  @spec supported_country_modules() :: [module()] | []
+  def supported_country_modules(), do: @supported_country_modules
 
   @spec country_module(country_code) :: Module.t() | error_tuple()
   def country_module(country_code) when is_binary(country_code) or is_atom(country_code) do

@@ -1,6 +1,13 @@
 defmodule IbanEx.Country.CY do
   @moduledoc """
   Cyprus IBAN parsing rules
+
+  ## Examples
+
+    iex> %IbanEx.Iban{country_code: "CY", check_digits: "17", bank_code: "002", branch_code: "00128", national_check: nil, account_number: "0000001200527600"}
+    iex> |> IbanEx.Country.CY.to_string()
+    "CY 17 002 00128 0000001200527600"
+
   """
 
   @size 28
