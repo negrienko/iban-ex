@@ -12,51 +12,57 @@ In just a few letters and numbers, the IBAN captures all of the country, bank, a
 
 ### Successfull case to parse IBAN
 
-#### Parse string with valid formatted IBAN from supported country
-
-```elixir
-{:ok, iban} = "FI2112345600000785" |> IbanEx.Parser.parse()
-IO.inspect(iban)
-IbanEx.Iban.pretty(iban)
-```
-
-#### Success case responses
-
-```elixir
-%IbanEx.Iban{
-  country_code: "FI",
-  check_digits: "21",
-  bank_code: "123456",
-  branch_code: nil,
-  national_check: "5",
-  account_number: "0000078"
-}
-
-"FI 21 123456 0000078 5"
-```
+  ```elixir
+      iex>  "FI2112345600000785" |> IbanEx.Parser.parse()
+      {:ok, %IbanEx.Iban{
+        country_code: "FI",
+        check_digits: "21",
+        bank_code: "123456",
+        branch_code: nil,
+        national_check: "5",
+        account_number: "0000078"
+      }}
+  ```
 
 ### Errors cases of IBAN parsing
 
-#### Parse strings with invalid formatted IBANs from unsupported and supported countries
+#### To check IBAN's country is supported
 
-```elixir
-{:error, unsupported_country_code} = "AZ21NABZ00000000137010001944" |> IbanEx.Parser.parse()
-IO.inspect(IbanEx.Error.message(unsupported_country_code), label: unsupported_country_code)
+  ```elixir
+      iex> {:error, unsupported_country_code} = IbanEx.Parser.parse("AZ21NABZ00000000137010001944")
+      {:error, :unsupported_country_code}
+      iex> IbanEx.Error.message(unsupported_country_code)
+      "Unsupported country code"
+  ```
 
-{:error, invalid_length_code} = "AT6119043002345732012" |> IbanEx.Parser.parse()
-IO.inspect(IbanEx.Error.message(invalid_length_code), label: invalid_length_code)
+#### Validate and check IBAN length
 
-{:error, invalid_checksum} = "AT621904300234573201" |> IbanEx.Parser.parse()
-IO.inspect(IbanEx.Error.message(invalid_checksum), label: invalid_checksum)
-```
+  ```elixir
+      iex> {:error, invalid_length} = IbanEx.Parser.parse("AT6119043002345732012")
+      {:error, :invalid_length}
+      iex> IbanEx.Error.message(invalid_length)
+      "IBAN violates the required length"
+  ```
 
-#### Error cases response
+  ```elixir
+      iex> {:error, length_to_long} = IbanEx.Validator.check_iban_length("AT6119043002345732012")
+      {:error, :length_to_long}
+      iex> IbanEx.Error.message(length_to_long)
+      "IBAN longer then required length"
+      iex> {:error, length_to_short} = IbanEx.Validator.check_iban_length("AT61190430023457320")
+      {:error, :length_to_short}
+      iex> IbanEx.Error.message(length_to_short)
+      "IBAN shorter then required length"
+  ```
 
-```elixir
-unsupported_country_code: "Unsupported country code"
-invalid_length: "IBAN violates the required length"
-invalid_checksum: "IBAN's checksum is invalid"
-```
+#### Validate IBAN checksum
+
+  ```elixir
+      iex> {:error, invalid_checksum} = IbanEx.Parser.parse("AT621904300234573201")
+      {:error, :invalid_checksum}
+      iex> IbanEx.Error.message(invalid_checksum)
+      "IBAN's checksum is invalid"
+  ```
 
 ## Installation
 
@@ -65,7 +71,7 @@ The package can be installed by adding `iban_ex` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:iban_ex, "~> 0.1.1"}
+    {:iban_ex, "~> 0.1.2"}
   ]
 end
 ```

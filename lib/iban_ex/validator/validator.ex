@@ -5,26 +5,49 @@ defmodule IbanEx.Validator do
   alias IbanEx.Validator.Replacements
   import IbanEx.Commons, only: [normalize: 1]
 
+  defp error_accumulator(acc, error_message)
+  defp error_accumulator(acc, {:error, error}), do: [error | acc]
+  defp error_accumulator(acc, _), do: acc
+
+  defp violation_functions(),
+    do: [
+      {&__MODULE__.iban_violates_format?/1, {:error, :invalid_format}},
+      {&__MODULE__.iban_unsupported_country?/1, {:error, :unsupported_country_code}},
+      {&__MODULE__.iban_violates_length?/1, {:error, :invalid_length}},
+      {&__MODULE__.iban_violates_country_rule?/1, {:error, :invalid_format}},
+      {&__MODULE__.iban_violates_checksum?/1, {:error, :invalid_checksum}}
+    ]
+
+  @doc """
+  Accumulate check results in the list of errors
+  Check iban_violates_format?, iban_unsupported_country?, iban_violates_length?, iban_violates_country_rule?, iban_violates_checksum?
+  """
+  @spec violations(String.t()) :: [] | [atom()]
+  def violations(iban) do
+    violation_functions()
+    |> Enum.reduce([], fn {fun, value}, acc -> error_accumulator(acc, !fun.(iban) or value) end)
+    |> Enum.reverse()
+  end
+
+  @doc """
+  Make checks in this order step-by-step before first error ->
+
+    iban_violates_format?,
+    iban_unsupported_country?,
+    iban_violates_length?,
+    iban_violates_country_rule?,
+    iban_violates_checksum?
+
+  """
   @spec validate(String.t()) :: {:ok, String.t()} | {:error, Atom.t()}
   def validate(iban) do
     cond do
-      iban_violates_format?(iban) ->
-        {:error, :invalid_format}
-
-      iban_unsupported_country?(iban) ->
-        {:error, :unsupported_country_code}
-
-      iban_violates_length?(iban) ->
-        {:error, :invalid_length}
-
-      iban_violates_country_rule?(iban) ->
-        {:error, :invalid_format}
-
-      iban_violates_checksum?(iban) ->
-        {:error, :invalid_checksum}
-
-      true ->
-        {:ok, normalize(iban)}
+      iban_violates_format?(iban) -> {:error, :invalid_format}
+      iban_unsupported_country?(iban) -> {:error, :unsupported_country_code}
+      iban_violates_length?(iban) -> {:error, :invalid_length}
+      iban_violates_country_rule?(iban) -> {:error, :invalid_format}
+      iban_violates_checksum?(iban) -> {:error, :invalid_checksum}
+      true -> {:ok, normalize(iban)}
     end
   end
 
@@ -37,12 +60,12 @@ defmodule IbanEx.Validator do
 
   # - Check whether a given IBAN violates the required format.
   @spec iban_violates_format?(String.t()) :: boolean
-  defp iban_violates_format?(iban),
+  def iban_violates_format?(iban),
     do: Regex.match?(~r/[^A-Z0-9]/i, normalize(iban))
 
   # - Check whether a given IBAN violates the supported countries.
   @spec iban_unsupported_country?(String.t()) :: boolean
-  defp iban_unsupported_country?(iban) do
+  def iban_unsupported_country?(iban) do
     supported? =
       iban
       |> Parser.country_code()
@@ -51,33 +74,52 @@ defmodule IbanEx.Validator do
     !supported?
   end
 
-  # - Check whether a given IBAN violates the required length.
+  @doc "Check whether a given IBAN violates the required length."
   @spec iban_violates_length?(String.t()) :: boolean
-  defp iban_violates_length?(iban) do
+  def iban_violates_length?(iban) do
     with country_code <- Parser.country_code(iban),
-         country_module <- Country.country_module(country_code) do
+         country_module when is_atom(country_module) <- Country.country_module(country_code) do
       size(iban) != country_module.size()
     else
-      {:error, _} -> true
+      {:error, _error} -> true
     end
   end
 
-  # - Check whether a given IBAN violates the country rules.
+  @doc "Check length of IBAN"
+  @spec check_iban_length(String.t()) :: {:error, :length_to_short | :length_to_long } | :ok
+  def check_iban_length(iban) do
+    unless iban_unsupported_country?(iban) do
+      country_module =
+        iban
+        |> Parser.country_code()
+        |> Country.country_module()
+
+      case country_module.size() - size(iban) do
+        diff when diff > 0 -> {:error, :length_to_short}
+        diff when diff < 0 -> {:error, :length_to_long}
+        0 -> :ok
+      end
+    else
+      {:error, :unsupported_country_code}
+    end
+  end
+
+  @doc "Check whether a given IBAN violates the country rules"
   @spec iban_violates_country_rule?(String.t()) :: boolean
-  defp iban_violates_country_rule?(iban) do
+  def iban_violates_country_rule?(iban) do
     with country_code <- Parser.country_code(iban),
          bban <- Parser.bban(iban),
-         country_module <- Country.country_module(country_code),
+         country_module when is_atom(country_module) <- Country.country_module(country_code),
          rule <- country_module.rule() do
       !Regex.match?(rule, bban)
     else
-      {:error, _} -> true
+      {:error, _error} -> true
     end
   end
 
-  # - Check whether a given IBAN violates the required checksum.
+  @doc "Check whether a given IBAN violates the required checksum."
   @spec iban_violates_checksum?(String.t()) :: boolean
-  defp iban_violates_checksum?(iban) do
+  def iban_violates_checksum?(iban) do
     check_sum_base = Parser.bban(iban) <> Parser.country_code(iban) <> "00"
 
     replacements = Replacements.replacements()

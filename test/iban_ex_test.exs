@@ -1,6 +1,7 @@
 defmodule IbanExTest do
   alias IbanEx.{Country, Iban, Parser}
   use ExUnit.Case, async: true
+  doctest_file "README.md"
   doctest IbanEx.Country.AT
   doctest IbanEx.Country.BE
   doctest IbanEx.Country.BG
