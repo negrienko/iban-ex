@@ -71,7 +71,7 @@ The package can be installed by adding `iban_ex` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:iban_ex, "~> 0.1.2"}
+    {:iban_ex, "~> 0.1.3"}
   ]
 end
 ```
