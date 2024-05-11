@@ -20,19 +20,24 @@ defmodule IbanEx.Parser do
           check_digits: check_digits(valid_iban)
         }
 
-        regex = Country.country_module(iban_map.country_code).rule()
-        bban = bban(iban_string)
-
         bban_map =
-          for {key, val} <- Regex.named_captures(regex, bban),
-              into: %{},
-              do: {String.to_atom(key), val}
+          iban_string
+          |> bban()
+          |> parse_bban(iban_map.country_code)
 
         {:ok, struct(Iban, Map.merge(iban_map, bban_map))}
 
       {:error, error_type} ->
         {:error, error_type}
     end
+  end
+
+  @spec parse_bban(binary(), <<_::16>>) :: map()
+  def parse_bban(bban_string, country_code) do
+    regex = Country.country_module(country_code).rule()
+    for {key, val} <- Regex.named_captures(regex, bban_string),
+        into: %{},
+        do: {String.to_atom(key), val}
   end
 
   @spec country_code(iban_string()) :: country_code_string()
