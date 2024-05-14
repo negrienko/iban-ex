@@ -29,7 +29,7 @@ In just a few letters and numbers, the IBAN captures all of the country, bank, a
 #### To check IBAN's country is supported
 
   ```elixir
-      iex> {:error, unsupported_country_code} = IbanEx.Parser.parse("AZ21NABZ00000000137010001944")
+      iex> {:error, unsupported_country_code} = IbanEx.Parser.parse("ZU21NABZ00000000137010001944")
       {:error, :unsupported_country_code}
       iex> IbanEx.Error.message(unsupported_country_code)
       "Unsupported country code"
@@ -71,7 +71,7 @@ The package can be installed by adding `iban_ex` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:iban_ex, "~> 0.1.5"}
+    {:iban_ex, "~> 0.1.6"}
   ]
 end
 ```

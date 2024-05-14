@@ -4,10 +4,18 @@ defmodule IbanEx.Country.MC do
 
   ## Examples
 
-    iex> %IbanEx.Iban{country_code: "MC", check_digits: "58", bank_code: "11222", branch_code: "00001", national_check: "30", account_number: "01234567890"}
-    iex> |> IbanEx.Country.MC.to_string()
-    "MC 58 11222 00001 01234567890 30"
-
+  ```elixir
+      iex>  %IbanEx.Iban{
+      ...>    country_code: "MC",
+      ...>    check_digits: "58",
+      ...>    bank_code: "11222",
+      ...>    branch_code: "00001",
+      ...>    national_check: "30",
+      ...>    account_number: "01234567890"
+      ...>  }
+      ...>  |> IbanEx.Country.MC.to_string()
+      "MC 58 11222 00001 01234567890 30"
+  ```
   """
 
   @size 27

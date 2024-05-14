@@ -1,14 +1,27 @@
 defprotocol IbanEx.Deserialize do
-  @type iban_or_error() :: IbanEx.Iban.t() | {:error, :can_not_parse_map | atom()}
+  @type iban() :: IbanEx.Iban.t()
+  @type iban_or_error() ::
+          iban()
+          | {:invalid_checksum, binary()}
+          | {:invalid_format, binary()}
+          | {:invalid_length, binary()}
+          | {:can_not_parse_map, binary()}
+          | {:unsupported_country_code, binary()}
+
   @spec to_iban(t()) :: iban_or_error()
   def to_iban(value)
 end
 
 defimpl IbanEx.Deserialize, for: [BitString, String] do
   alias IbanEx.{Parser, Error}
-  @type iban_or_error() :: IbanEx.Iban.t() | {:error, atom()}
-  @spec to_iban(binary()) :: iban_or_error()
-  @spec to_iban(String.t()) :: iban_or_error()
+  @type iban() :: IbanEx.Iban.t()
+  @type iban_or_error() ::
+          iban()
+          | {:invalid_checksum, binary()}
+          | {:invalid_format, binary()}
+          | {:invalid_length, binary()}
+          | {:can_not_parse_map, binary()}
+          | {:unsupported_country_code, binary()}
   def to_iban(string) do
     case Parser.parse(string) do
       {:ok, iban} -> iban
@@ -18,10 +31,17 @@ defimpl IbanEx.Deserialize, for: [BitString, String] do
 end
 
 defimpl IbanEx.Deserialize, for: Map do
-  alias IbanEx.Iban
-  @type iban_or_error() :: IbanEx.Iban.t() | {:error, :can_not_parse_map}
+  alias IbanEx.{Iban, Error}
 
-  @spec to_iban(map()) :: iban_or_error()
+  @type iban() :: IbanEx.Iban.t()
+  @type iban_or_error() ::
+          iban()
+          | {:invalid_checksum, binary()}
+          | {:invalid_format, binary()}
+          | {:invalid_length, binary()}
+          | {:can_not_parse_map, binary()}
+          | {:unsupported_country_code, binary()}
+
   def to_iban(
         %{
           country_code: _country_code,
@@ -49,13 +69,10 @@ defimpl IbanEx.Deserialize, for: Map do
     to_iban(atomized_map)
   end
 
-  def to_iban(map) when is_map(map), do: {:error, :can_not_parse_map}
+  def to_iban(map) when is_map(map), do: {:can_not_parse_map, Error.message(:can_not_parse_map)}
 end
 
 defimpl IbanEx.Deserialize, for: List do
   alias IbanEx.Iban
-  @type iban_or_error() :: IbanEx.Iban.t() | {:error, :can_not_parse_map}
-
-  @spec to_iban(list()) :: iban_or_error()
   def to_iban(list), do: struct(Iban, Map.new(list))
 end

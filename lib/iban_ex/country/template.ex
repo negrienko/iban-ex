@@ -36,7 +36,7 @@ defmodule IbanEx.Country.Template do
       end
 
       @impl IbanEx.Country.Template
-      @spec size() :: Integer.t()
+      @spec size() :: integer()
       def size(), do: @size
 
       @impl IbanEx.Country.Template

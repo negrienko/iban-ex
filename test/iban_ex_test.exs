@@ -2,42 +2,74 @@ defmodule IbanExTest do
   alias IbanEx.{Country, Iban, Parser}
   use ExUnit.Case, async: true
   doctest_file "README.md"
+  doctest IbanEx.Country.AD
+  doctest IbanEx.Country.AE
+  doctest IbanEx.Country.AL
   doctest IbanEx.Country.AT
+  doctest IbanEx.Country.AZ
+  doctest IbanEx.Country.BA
   doctest IbanEx.Country.BE
   doctest IbanEx.Country.BG
+  doctest IbanEx.Country.BH
+  doctest IbanEx.Country.BR
   doctest IbanEx.Country.CH
+  doctest IbanEx.Country.CR
   doctest IbanEx.Country.CY
   doctest IbanEx.Country.CZ
   doctest IbanEx.Country.DE
   doctest IbanEx.Country.DK
+  doctest IbanEx.Country.DO
   doctest IbanEx.Country.EE
+  doctest IbanEx.Country.EG
   doctest IbanEx.Country.ES
   doctest IbanEx.Country.FI
+  doctest IbanEx.Country.FO
   doctest IbanEx.Country.FR
   doctest IbanEx.Country.GB
+  doctest IbanEx.Country.GE
   doctest IbanEx.Country.GI
+  doctest IbanEx.Country.GL
   doctest IbanEx.Country.GR
+  doctest IbanEx.Country.GT
+  doctest IbanEx.Country.JO
   doctest IbanEx.Country.HR
   doctest IbanEx.Country.HU
   doctest IbanEx.Country.IE
+  doctest IbanEx.Country.IL
   doctest IbanEx.Country.IT
+  doctest IbanEx.Country.KZ
+  doctest IbanEx.Country.KW
+  doctest IbanEx.Country.LB
   doctest IbanEx.Country.LI
   doctest IbanEx.Country.LT
   doctest IbanEx.Country.LU
   doctest IbanEx.Country.LV
   doctest IbanEx.Country.MC
+  doctest IbanEx.Country.MD
+  doctest IbanEx.Country.ME
+  doctest IbanEx.Country.MK
+  doctest IbanEx.Country.MR
   doctest IbanEx.Country.MT
   doctest IbanEx.Country.NL
   doctest IbanEx.Country.NO
+  doctest IbanEx.Country.PK
   doctest IbanEx.Country.PL
   doctest IbanEx.Country.PT
+  doctest IbanEx.Country.QA
   doctest IbanEx.Country.RO
+  doctest IbanEx.Country.RS
+  doctest IbanEx.Country.SA
   doctest IbanEx.Country.SE
-  doctest IbanEx.Country.SM
   doctest IbanEx.Country.SI
   doctest IbanEx.Country.SK
+  doctest IbanEx.Country.SM
+  doctest IbanEx.Country.SV
+  doctest IbanEx.Country.TL
+  doctest IbanEx.Country.TR
   doctest IbanEx.Country.UA
   doctest IbanEx.Country.VA
+  doctest IbanEx.Country.VG
+  doctest IbanEx.Country.XK
 
   @ibans [
     "AL47212110090000000235698741",

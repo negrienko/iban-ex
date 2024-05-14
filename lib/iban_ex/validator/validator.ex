@@ -14,7 +14,7 @@ defmodule IbanEx.Validator do
       {&__MODULE__.iban_violates_format?/1, {:error, :invalid_format}},
       {&__MODULE__.iban_unsupported_country?/1, {:error, :unsupported_country_code}},
       {&__MODULE__.iban_violates_length?/1, {:error, :invalid_length}},
-      {&__MODULE__.iban_violates_country_rule?/1, {:error, :invalid_format}},
+      {&__MODULE__.iban_violates_country_rule?/1, {:error, :invalid_format_for_country}},
       {&__MODULE__.iban_violates_checksum?/1, {:error, :invalid_checksum}}
     ]
 
@@ -39,13 +39,21 @@ defmodule IbanEx.Validator do
     iban_violates_checksum?
 
   """
-  @spec validate(String.t()) :: {:ok, String.t()} | {:error, Atom.t()}
+  @type iban() :: binary()
+  @type iban_or_error() ::
+          {:ok, iban()}
+          | {:invalid_checksum, binary()}
+          | {:invalid_format, binary()}
+          | {:invalid_length, binary()}
+          | {:unsupported_country_code, binary()}
+  @spec validate(String.t()) :: {:ok, String.t()} | {:error, atom()}
+
   def validate(iban) do
     cond do
       iban_violates_format?(iban) -> {:error, :invalid_format}
       iban_unsupported_country?(iban) -> {:error, :unsupported_country_code}
       iban_violates_length?(iban) -> {:error, :invalid_length}
-      iban_violates_country_rule?(iban) -> {:error, :invalid_format}
+      iban_violates_country_rule?(iban) -> {:error, :invalid_format_for_country}
       iban_violates_checksum?(iban) -> {:error, :invalid_checksum}
       true -> {:ok, normalize(iban)}
     end
@@ -86,21 +94,23 @@ defmodule IbanEx.Validator do
   end
 
   @doc "Check length of IBAN"
-  @spec check_iban_length(String.t()) :: {:error, :length_to_short | :length_to_long } | :ok
+  @spec check_iban_length(String.t()) :: {:error, :length_to_short | :length_to_long} | :ok
   def check_iban_length(iban) do
-    unless iban_unsupported_country?(iban) do
-      country_module =
-        iban
-        |> Parser.country_code()
-        |> Country.country_module()
+    case iban_unsupported_country?(iban) do
+      true ->
+        {:error, :unsupported_country_code}
 
-      case country_module.size() - size(iban) do
-        diff when diff > 0 -> {:error, :length_to_short}
-        diff when diff < 0 -> {:error, :length_to_long}
-        0 -> :ok
-      end
-    else
-      {:error, :unsupported_country_code}
+      false ->
+        country_module =
+          iban
+          |> Parser.country_code()
+          |> Country.country_module()
+
+        case country_module.size() - size(iban) do
+          diff when diff > 0 -> {:error, :length_to_short}
+          diff when diff < 0 -> {:error, :length_to_long}
+          0 -> :ok
+        end
     end
   end
 

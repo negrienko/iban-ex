@@ -4,10 +4,18 @@ defmodule IbanEx.Country.EE do
 
   ## Examples
 
-    iex> %IbanEx.Iban{country_code: "EE", check_digits: "38", bank_code: "22", branch_code: "00", national_check: "5", account_number: "22102014568"}
-    iex> |> IbanEx.Country.EE.to_string()
-    "EE 38 22 00 22102014568 5"
-
+  ```elixir
+      iex>  %IbanEx.Iban{
+      ...>    country_code: "EE",
+      ...>    check_digits: "38",
+      ...>    bank_code: "22",
+      ...>    branch_code: "00",
+      ...>    national_check: "5",
+      ...>    account_number: "22102014568"
+      ...>  }
+      ...>  |> IbanEx.Country.EE.to_string()
+      "EE 38 22 00 22102014568 5"
+  ```
   """
 
   @size 20

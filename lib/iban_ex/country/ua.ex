@@ -4,10 +4,18 @@ defmodule IbanEx.Country.UA do
 
   ## Examples
 
-    iex> %IbanEx.Iban{country_code: "UA", check_digits: "21", bank_code: "322313", branch_code: nil, national_check: nil, account_number: "0000026007233566001"}
-    iex> |> IbanEx.Country.UA.to_string()
-    "UA 21 322313 0000026007233566001"
-
+  ```elixir
+      iex>  %IbanEx.Iban{
+      ...>    country_code: "UA",
+      ...>    check_digits: "21",
+      ...>    bank_code: "322313",
+      ...>    branch_code: nil,
+      ...>    national_check: nil,
+      ...>    account_number: "0000026007233566001"
+      ...>  }
+      ...>  |> IbanEx.Country.UA.to_string()
+      "UA 21 322313 0000026007233566001"
+  ```
   """
 
   @size 29

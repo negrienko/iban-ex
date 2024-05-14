@@ -6,6 +6,6 @@ defmodule IbanEx.Serialize do
   @spec to_string(Iban.t()) :: String.t()
   def to_string(iban), do: Formatter.format(iban)
 
-  @spec to_map(Iban.t()) :: Map.t()
+  @spec to_map(Iban.t()) :: map()
   def to_map(iban), do: Map.from_struct(iban)
 end

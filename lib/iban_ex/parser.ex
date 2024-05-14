@@ -7,11 +7,20 @@ defmodule IbanEx.Parser do
   @type iban_string() :: String.t()
   @type country_code_string() :: <<_::16>>
   @type check_digits_string() :: <<_::16>>
-  @type iban_or_error() :: IbanEx.Iban.t() | {:error, atom()}
 
-  @spec parse({:ok, String.t()} | String.t()) :: iban_or_error()
+  @type iban() :: IbanEx.Iban.t()
+  @type iban_or_error() ::
+          {:ok, iban()}
+          | {:invalid_checksum, binary()}
+          | {:invalid_format, binary()}
+          | {:invalid_length, binary()}
+          | {:can_not_parse_map, binary()}
+          | {:unsupported_country_code, binary()}
+
+  @spec parse({:ok, binary()}) :: iban_or_error()
   def parse({:ok, iban_string}), do: parse(iban_string)
 
+  @spec parse(binary()) :: iban_or_error()
   def parse(iban_string) do
     case Validator.validate(iban_string) do
       {:ok, valid_iban} ->
