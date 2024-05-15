@@ -9,6 +9,7 @@ defmodule IbanEx.Country.Template do
 
   @callback size() :: size()
   @callback rule() :: rule()
+  @callback incomplete_rule() :: rule()
   @callback to_string(Iban.t(), joiner()) :: String.t()
   @callback to_string(Iban.t()) :: String.t()
 
@@ -39,11 +40,33 @@ defmodule IbanEx.Country.Template do
       @spec size() :: integer()
       def size(), do: @size
 
+      @doc """
+      Return Regex for parsing complete BBAN (part of IBAN string)
+      """
       @impl IbanEx.Country.Template
       @spec rule() :: Regex.t()
       def rule(), do: @rule
 
-      defoverridable to_string: 1, to_string: 2, size: 0, rule: 0
+      @doc """
+      Return Regex without trailing “$” for parsing incomplete BBAN (part of IBAN string) (for partial suggestions)
+      """
+      @impl IbanEx.Country.Template
+      @spec incomplete_rule() :: Regex.t()
+      def incomplete_rule() do
+        source =
+          @rule
+          |> Regex.source()
+          |> String.slice(0..-2//1)
+          |> String.replace("{", "{0,")
+
+        opts =
+          @rule
+          |> Regex.opts()
+
+        Regex.compile!(source, opts)
+      end
+
+      defoverridable to_string: 1, to_string: 2, size: 0, rule: 0, incomplete_rule: 0
     end
   end
 end

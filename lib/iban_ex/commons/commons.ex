@@ -1,6 +1,11 @@
 defmodule IbanEx.Commons do
   @moduledoc false
 
+  @spec blank(nil | binary()) :: nil | binary()
+  def blank(nil), do: nil
+  def blank(""), do: nil
+  def blank(string) when is_binary(string), do: string
+
   @spec normalize(binary()) :: binary()
   def normalize(string) do
     string

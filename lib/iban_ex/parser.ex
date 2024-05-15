@@ -2,7 +2,7 @@ defmodule IbanEx.Parser do
   @moduledoc false
 
   alias IbanEx.{Country, Iban, Validator}
-  import IbanEx.Commons, only: [normalize_and_slice: 2]
+  import IbanEx.Commons, only: [normalize_and_slice: 2, blank: 1]
 
   @type iban_string() :: String.t()
   @type country_code_string() :: <<_::16>>
@@ -42,19 +42,36 @@ defmodule IbanEx.Parser do
   end
 
   @spec parse_bban(binary(), <<_::16>>) :: map()
-  def parse_bban(bban_string, country_code) do
-    regex = Country.country_module(country_code).rule()
-    for {key, val} <- Regex.named_captures(regex, bban_string),
-        into: %{},
-        do: {String.to_atom(key), val}
+  def parse_bban(bban_string, country_code, options \\ [incomplete: false])
+
+  def parse_bban(bban_string, country_code, incomplete: true) do
+    Country.country_module(country_code).incomplete_rule()
+    |> parse_bban_by_regex(bban_string)
+  end
+
+  def parse_bban(bban_string, country_code, _options) do
+    Country.country_module(country_code).rule()
+    |> parse_bban_by_regex(bban_string)
+  end
+
+  defp parse_bban_by_regex(regex, bban_string) do
+    case Regex.named_captures(regex, bban_string) do
+      map when is_map(map) ->
+        for {key, val} <- map,
+            into: %{},
+            do: {String.to_atom(key), blank(val)}
+
+      nil ->
+        %{}
+    end
   end
 
   @spec country_code(iban_string()) :: country_code_string()
-  def country_code(iban_string), do: normalize_and_slice(iban_string, 0..1)
+  def country_code(iban_string), do: normalize_and_slice(iban_string, 0..1) |> blank()
 
   @spec check_digits(binary()) :: check_digits_string()
-  def check_digits(iban_string), do: normalize_and_slice(iban_string, 2..3)
+  def check_digits(iban_string), do: normalize_and_slice(iban_string, 2..3) |> blank()
 
   @spec bban(binary()) :: binary()
-  def bban(iban_string), do: normalize_and_slice(iban_string, 4..-1//1)
+  def bban(iban_string), do: normalize_and_slice(iban_string, 4..-1//1) |> blank()
 end
