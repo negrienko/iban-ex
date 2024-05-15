@@ -45,13 +45,23 @@ defmodule IbanEx.Parser do
   def parse_bban(bban_string, country_code, options \\ [incomplete: false])
 
   def parse_bban(bban_string, country_code, incomplete: true) do
-    Country.country_module(country_code).incomplete_rule()
-    |> parse_bban_by_regex(bban_string)
+    case Country.is_country_code_supported?(country_code) do
+      true ->
+        Country.country_module(country_code).incomplete_rule()
+        |> parse_bban_by_regex(bban_string)
+      false ->
+        %{}
+    end
   end
 
-  def parse_bban(bban_string, country_code, _options) do
-    Country.country_module(country_code).rule()
-    |> parse_bban_by_regex(bban_string)
+  def parse_bban(bban_string, country_code, incomplete: false) do
+    case Country.is_country_code_supported?(country_code) do
+      true ->
+        Country.country_module(country_code).rule()
+        |> parse_bban_by_regex(bban_string)
+      false ->
+        %{}
+    end
   end
 
   defp parse_bban_by_regex(_regex, nil), do: %{}
