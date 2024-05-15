@@ -2,7 +2,7 @@ defmodule IbanEx.Parser do
   @moduledoc false
 
   alias IbanEx.{Country, Iban, Validator}
-  import IbanEx.Commons, only: [normalize_and_slice: 2, blank: 1]
+  import IbanEx.Commons, only: [normalize_and_slice: 2]
 
   @type iban_string() :: String.t()
   @type country_code_string() :: <<_::16>>
@@ -60,7 +60,7 @@ defmodule IbanEx.Parser do
       map when is_map(map) ->
         for {key, val} <- map,
             into: %{},
-            do: {String.to_atom(key), blank(val)}
+            do: {String.to_atom(key), val}
 
       nil ->
         %{}
@@ -68,11 +68,11 @@ defmodule IbanEx.Parser do
   end
 
   @spec country_code(iban_string()) :: country_code_string()
-  def country_code(iban_string), do: normalize_and_slice(iban_string, 0..1) |> blank()
+  def country_code(iban_string), do: normalize_and_slice(iban_string, 0..1)
 
   @spec check_digits(binary()) :: check_digits_string()
-  def check_digits(iban_string), do: normalize_and_slice(iban_string, 2..3) |> blank()
+  def check_digits(iban_string), do: normalize_and_slice(iban_string, 2..3)
 
   @spec bban(binary()) :: binary()
-  def bban(iban_string), do: normalize_and_slice(iban_string, 4..-1//1) |> blank()
+  def bban(iban_string), do: normalize_and_slice(iban_string, 4..-1//1)
 end
