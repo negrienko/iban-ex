@@ -54,6 +54,7 @@ defmodule IbanEx.Parser do
     |> parse_bban_by_regex(bban_string)
   end
 
+  defp parse_bban_by_regex(_regex, nil), do: %{}
   defp parse_bban_by_regex(regex, bban_string) do
     case Regex.named_captures(regex, bban_string) do
       map when is_map(map) ->
