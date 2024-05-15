@@ -123,7 +123,7 @@ defmodule IbanEx.Validator do
          rule <- country_module.rule() do
       !Regex.match?(rule, bban)
     else
-      {:error, _error} -> true
+      _ -> true
     end
   end
 
