@@ -2,7 +2,7 @@ defmodule IbanEx.MixProject do
   use Mix.Project
 
   @source_url "https://g.tulz.dev/opensource/iban-ex"
-  @version "0.1.6"
+  @version "0.1.7"
 
   def project do
     [
