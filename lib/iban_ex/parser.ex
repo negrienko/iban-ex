@@ -69,8 +69,9 @@ defmodule IbanEx.Parser do
   def parse_bban(bban_string, country_code, incomplete: true) do
     case Country.is_country_code_supported?(country_code) do
       true ->
-        parse_bban_by_rules(bban_string, Country.country_module(country_code))
-
+        country_code
+        |> Country.country_module()
+        |> parse_bban_by_country_rules(bban_string)
       false ->
         %{}
     end
@@ -81,13 +82,12 @@ defmodule IbanEx.Parser do
       true ->
         Country.country_module(country_code).rule()
         |> parse_bban_by_regex(bban_string)
-
       false ->
         %{}
     end
   end
 
-  defp parse_bban_by_rules(bban_string, country_module) do
+  defp parse_bban_by_country_rules(country_module, bban_string) do
     for {field, rule} <- country_module.rules,
         into: %{},
         do: {field, normalize_and_slice(bban_string, rule.range)}

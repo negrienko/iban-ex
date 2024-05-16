@@ -9,6 +9,10 @@ defmodule IbanEx.Error do
           | :can_not_parse_map
           | :length_to_long
           | :length_to_short
+          | :invalid_bank_code
+          | :invalid_account_number
+          | :invalid_branch_code
+          | :invalid_national_check
           | atom()
   @type errors() :: [error()]
   @errors [
@@ -18,7 +22,11 @@ defmodule IbanEx.Error do
     :invalid_checksum,
     :can_not_parse_map,
     :length_to_long,
-    :length_to_short
+    :length_to_short,
+    :invalid_bank_code,
+    :invalid_account_number,
+    :invalid_branch_code,
+    :invalid_national_check
 ]
 
   @messages [
@@ -28,8 +36,12 @@ defmodule IbanEx.Error do
     invalid_checksum: "IBAN's checksum is invalid",
     can_not_parse_map: "Can't parse map to IBAN struct",
     length_to_long: "IBAN longer then required length",
-    length_to_short: "IBAN shorter then required length"
-  ]
+    length_to_short: "IBAN shorter then required length",
+    invalid_bank_code: "Bank code violates required format",
+    invalid_account_number: "Account number violates required format",
+    invalid_branch_code: "Branch code violates required format",
+    invalid_national_check: "National check symbols violates required format",
+]
 
   @spec message(error()) :: String.t()
   def message(error) when error in @errors, do: @messages[error]

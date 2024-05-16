@@ -41,6 +41,7 @@ defmodule IbanEx.Country do
     "IE" => IbanEx.Country.IE,
     "IL" => IbanEx.Country.IL,
     "IT" => IbanEx.Country.IT,
+    "IS" => IbanEx.Country.IS,
     "JO" => IbanEx.Country.JO,
     "KZ" => IbanEx.Country.KZ,
     "KW" => IbanEx.Country.KW,

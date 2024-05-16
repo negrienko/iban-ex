@@ -3,10 +3,11 @@ defmodule IbanEx.Validator do
 
   alias IbanEx.{Country, Parser}
   alias IbanEx.Validator.Replacements
-  import IbanEx.Commons, only: [normalize: 1]
+  import IbanEx.Commons, only: [normalize: 1, normalize_and_slice: 2]
 
   defp error_accumulator(acc, error_message)
   defp error_accumulator(acc, {:error, error}), do: [error | acc]
+  # defp error_accumulator(acc, list) when is_list(list), do: list ++ acc
   defp error_accumulator(acc, _), do: acc
 
   defp violation_functions(),
@@ -15,12 +16,25 @@ defmodule IbanEx.Validator do
       {&__MODULE__.iban_unsupported_country?/1, {:error, :unsupported_country_code}},
       {&__MODULE__.iban_violates_length?/1, {:error, :invalid_length}},
       {&__MODULE__.iban_violates_country_rule?/1, {:error, :invalid_format_for_country}},
-      {&__MODULE__.iban_violates_checksum?/1, {:error, :invalid_checksum}}
+      {&__MODULE__.iban_violates_bank_code_format?/1, {:error, :invalid_bank_code}},
+      {&__MODULE__.iban_violates_account_number_format?/1, {:error, :invalid_account_number}},
+      {&__MODULE__.iban_violates_branch_code_format?/1, {:error, :invalid_branch_code}},
+      {&__MODULE__.iban_violates_national_check_format?/1, {:error, :invalid_national_check}},
+      {&__MODULE__.iban_violates_checksum?/1, {:error, :invalid_checksum}},
     ]
 
   @doc """
   Accumulate check results in the list of errors
-  Check iban_violates_format?, iban_unsupported_country?, iban_violates_length?, iban_violates_country_rule?, iban_violates_checksum?
+  Check
+    iban_violates_format?,
+    iban_unsupported_country?,
+    iban_violates_length?,
+    iban_violates_country_rule?,
+    iban_violates_bank_code_format?,
+    iban_violates_account_number_format?
+    iban_violates_branch_code_format?,
+    iban_violates_national_check_format?,
+    iban_violates_checksum?,
   """
   @spec violations(String.t()) :: [] | [atom()]
   def violations(iban) do
@@ -36,8 +50,11 @@ defmodule IbanEx.Validator do
     iban_unsupported_country?,
     iban_violates_length?,
     iban_violates_country_rule?,
-    iban_violates_checksum?
-
+    iban_violates_bank_code_format?,
+    iban_violates_account_number_format?,
+    iban_violates_branch_code_format?,
+    iban_violates_national_check_format?,
+    iban_violates_checksum?,
   """
   @type iban() :: binary()
   @type iban_or_error() ::
@@ -46,6 +63,10 @@ defmodule IbanEx.Validator do
           | {:invalid_format, binary()}
           | {:invalid_length, binary()}
           | {:unsupported_country_code, binary()}
+          | {:invalid_bank_code, binary()}
+          | {:invalid_account_number, binary()}
+          | {:invalid_branch_code, binary()}
+          | {:invalid_national_check, binary()}
   @spec validate(String.t()) :: {:ok, String.t()} | {:error, atom()}
 
   def validate(iban) do
@@ -54,6 +75,10 @@ defmodule IbanEx.Validator do
       iban_unsupported_country?(iban) -> {:error, :unsupported_country_code}
       iban_violates_length?(iban) -> {:error, :invalid_length}
       iban_violates_country_rule?(iban) -> {:error, :invalid_format_for_country}
+      iban_violates_bank_code_format?(iban) -> {:error, :invalid_bank_code}
+      iban_violates_account_number_format?(iban) -> {:error, :invalid_account_number}
+      iban_violates_branch_code_format?(iban) -> {:error, :invalid_branch_code}
+      iban_violates_national_check_format?(iban) -> {:error, :invalid_national_check}
       iban_violates_checksum?(iban) -> {:error, :invalid_checksum}
       true -> {:ok, normalize(iban)}
     end
@@ -70,6 +95,34 @@ defmodule IbanEx.Validator do
   @spec iban_violates_format?(String.t()) :: boolean
   def iban_violates_format?(iban),
     do: Regex.match?(~r/[^A-Z0-9]/i, normalize(iban))
+
+  # - Check whether a given IBAN violates the required format in bank_code.
+  @spec iban_violates_bank_code_format?(binary()) :: boolean
+  def iban_violates_bank_code_format?(iban), do: iban_violates_bban_part_format?(iban, :bank_code)
+
+  # - Check whether a given IBAN violates the required format in branch_code.
+  @spec iban_violates_branch_code_format?(binary()) :: boolean
+  def iban_violates_branch_code_format?(iban), do: iban_violates_bban_part_format?(iban, :branch_code)
+
+  # - Check whether a given IBAN violates the required format in account_number.
+  @spec iban_violates_account_number_format?(binary()) :: boolean
+  def iban_violates_account_number_format?(iban), do: iban_violates_bban_part_format?(iban, :account_number)
+
+  # - Check whether a given IBAN violates the required format in national_check.
+  @spec iban_violates_national_check_format?(binary()) :: boolean
+  def iban_violates_national_check_format?(iban), do: iban_violates_bban_part_format?(iban, :national_check)
+
+  defp iban_violates_bban_part_format?(iban, part) do
+    with  country <- Parser.country_code(iban),
+          bban <- Parser.bban(iban),
+          true <- Country.is_country_code_supported?(country),
+          country_module <- Country.country_module(country),
+          {:ok, rule} <- Map.fetch(country_module.rules_map(), part) do
+      !Regex.match?(rule.regex, normalize_and_slice(bban, rule.range))
+    else
+      _ -> false
+    end
+  end
 
   # - Check whether a given IBAN violates the supported countries.
   @spec iban_unsupported_country?(String.t()) :: boolean
