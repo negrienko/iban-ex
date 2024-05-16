@@ -20,8 +20,9 @@ defmodule IbanEx.Parser do
   @spec parse({:ok, binary()}) :: iban_or_error()
   def parse({:ok, iban_string}), do: parse(iban_string)
 
-  @spec parse(binary()) :: iban_or_error()
-  def parse(iban_string) do
+  def parse(iban_string, options \\ [incomplete: false])
+
+  def parse(iban_string, incomplete: false) do
     case Validator.validate(iban_string) do
       {:ok, valid_iban} ->
         iban_map = %{
@@ -41,14 +42,35 @@ defmodule IbanEx.Parser do
     end
   end
 
+  def parse(iban_string, incomplete: true) do
+    iban_map = %{
+      country_code: country_code(iban_string),
+      check_digits: check_digits(iban_string)
+    }
+
+    bban = bban(iban_string)
+
+    case Country.is_country_code_supported?(iban_map.country_code) do
+      true ->
+        result =
+          parse_bban(bban, iban_map.country_code, incomplete: true)
+          |> Map.merge(iban_map)
+
+        {:ok, struct(Iban, result)}
+
+      false ->
+        {:error, :unsupported_country_code}
+    end
+  end
+
   @spec parse_bban(binary(), <<_::16>>) :: map()
   def parse_bban(bban_string, country_code, options \\ [incomplete: false])
 
   def parse_bban(bban_string, country_code, incomplete: true) do
     case Country.is_country_code_supported?(country_code) do
       true ->
-        Country.country_module(country_code).incomplete_rule()
-        |> parse_bban_by_regex(bban_string)
+        parse_bban_by_rules(bban_string, Country.country_module(country_code))
+
       false ->
         %{}
     end
@@ -59,12 +81,20 @@ defmodule IbanEx.Parser do
       true ->
         Country.country_module(country_code).rule()
         |> parse_bban_by_regex(bban_string)
+
       false ->
         %{}
     end
   end
 
+  defp parse_bban_by_rules(bban_string, country_module) do
+    for {field, rule} <- country_module.rules,
+        into: %{},
+        do: {field, normalize_and_slice(bban_string, rule.range)}
+  end
+
   defp parse_bban_by_regex(_regex, nil), do: %{}
+
   defp parse_bban_by_regex(regex, bban_string) do
     case Regex.named_captures(regex, bban_string) do
       map when is_map(map) ->
