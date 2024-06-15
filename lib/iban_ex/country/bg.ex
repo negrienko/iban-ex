@@ -1,4 +1,6 @@
 defmodule IbanEx.Country.BG do
+  # TODO Bulgaria IBAN contains account type (first 2 digits of account number)
+
   @moduledoc """
   Bulgaria IBAN parsing rules
 
