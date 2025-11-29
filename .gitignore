@@ -1,3 +1,19 @@
+# Development artefacts
+.DS_Store
+.vscode
+.drone.status
+
+# Elixir LS and Tools
+.elixir_ls
+.elixir-tools
+.lexical
+.expert
+
+# AI tools
+.claude
+.codex
+.mcp.json
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 

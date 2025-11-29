@@ -69,10 +69,7 @@ defmodule IbanEx.MixProject do
       {:sobelow, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:mix_audit, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:observer_cli, "~> 1.7.4", only: :dev, runtime: false},
-      {:elixir_sense, github: "elixir-lsp/elixir_sense", only: ~w(dev)a}
-
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:elixir_sense, "~> 1.0.0", only: :dev}
     ]
   end
 end
