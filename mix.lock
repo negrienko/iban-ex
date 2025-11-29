@@ -7,7 +7,7 @@
   "dialyxir": {:hex, :dialyxir, "1.4.3", "edd0124f358f0b9e95bfe53a9fcf806d615d8f838e2202a9f430d59566b6b53b", [:mix], [{:erlex, ">= 0.2.6", [hex: :erlex, repo: "hexpm", optional: false]}], "hexpm", "bf2cfb75cd5c5006bec30141b131663299c661a864ec7fbbc72dfa557487a986"},
   "doctor": {:hex, :doctor, "0.21.0", "20ef89355c67778e206225fe74913e96141c4d001cb04efdeba1a2a9704f1ab5", [:mix], [{:decimal, "~> 2.0", [hex: :decimal, repo: "hexpm", optional: false]}], "hexpm", "a227831daa79784eb24cdeedfa403c46a4cb7d0eab0e31232ec654314447e4e0"},
   "earmark_parser": {:hex, :earmark_parser, "1.4.39", "424642f8335b05bb9eb611aa1564c148a8ee35c9c8a8bba6e129d51a3e3c6769", [:mix], [], "hexpm", "06553a88d1f1846da9ef066b87b57c6f605552cfbe40d20bd8d59cc6bde41944"},
-  "elixir_sense": {:git, "https://github.com/elixir-lsp/elixir_sense.git", "885a63fc917a3f3468ddcf1b0855efd77be39182", []},
+  "elixir_sense": {:hex, :elixir_sense, "1.0.0", "ae4313b90e5564bd8b66aaed823b5e5f586db0dbb8849b7c4b7e07698c0df7bc", [:mix], [], "hexpm", "6a3baef02859e3e1a7d6f355ad6a4fc962ec56cb0f396a8be2bd8091aaa28821"},
   "erlex": {:hex, :erlex, "0.2.6", "c7987d15e899c7a2f34f5420d2a2ea0d659682c06ac607572df55a43753aa12e", [:mix], [], "hexpm", "2ed2e25711feb44d52b17d2780eabf998452f6efda104877a3881c2f8c0c0c75"},
   "esbuild": {:hex, :esbuild, "0.7.1", "fa0947e8c3c3c2f86c9bf7e791a0a385007ccd42b86885e8e893bdb6631f5169", [:mix], [{:castore, ">= 0.0.0", [hex: :castore, repo: "hexpm", optional: false]}], "hexpm", "66661cdf70b1378ee4dc16573fcee67750b59761b2605a0207c267ab9d19f13c"},
   "ex_check": {:hex, :ex_check, "0.14.0", "d6fbe0bcc51cf38fea276f5bc2af0c9ae0a2bb059f602f8de88709421dae4f0e", [:mix], [], "hexpm", "8a602e98c66e6a4be3a639321f1f545292042f290f91fa942a285888c6868af0"},

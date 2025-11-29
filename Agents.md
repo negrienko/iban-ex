@@ -3,46 +3,8 @@ This is a web application written using the Phoenix web framework.
 ## Project guidelines
 
 - Use `mix check` alias when you are done with all changes and fix any pending issues
-- Use the already included and available `:req` (`Req`) library for HTTP requests, **avoid** `:httpoison`, `:tesla`, and `:httpc`. Req is included by default and is the preferred HTTP client for Banker
-- Use the already included and available Elixir native JSON module to encode and decode JSON, **avoid** `:jason`, `:poison`, and other. JSON is a part of Elixir standard library and is the preferred JSON parser and generator for Banker
-
-<!-- elixir-toolkit-commands--execution-start -->
-
-## Command Execution
-
-**🔴 CRITICAL: ALWAYS prefix mix, iex commands with environment variables:**
-
-**For Development:**
-```bash
-env $(cat .dev.env | xargs) mix <COMMAND>
-env $(cat .dev.env | xargs) iex -S mix
-```
-
-**For Testing:**
-```bash
-env $(cat .test.env | xargs) mix test
-env $(cat .test.env | xargs) iex -S mix
-```
-
-**Examples:**
-```bash
-# Development
-env $(cat .dev.env | xargs) mix test
-env $(cat .dev.env | xargs) mix compile
-env $(cat .dev.env | xargs) mix phx.server
-
-# Testing
-env $(cat .test.env | xargs) mix test
-env $(cat .test.env | xargs) mix test test/banker/assistants/invoice_data_assistant_test.exs
-env $(cat .test.env | xargs) iex -S mix
-```
-
-**NEVER run mix commands without the appropriate ENV file prefix** - will fail with missing ENV variable errors.
-- Use `.dev.env` for development commands
-- Use `.test.env` for test commands
-
-
-<!-- elixir-toolkit-commands--execution-end -->
+- Use the already included and available `:req` (`Req`) library for HTTP requests, **avoid** `:httpoison`, `:tesla`, and `:httpc`. Req is included by default and is the preferred HTTP client for IbanEx
+- Use the already included and available Elixir native JSON module to encode and decode JSON, **avoid** `:jason`, `:poison`, and other. JSON is a part of Elixir standard library and is the preferred JSON parser and generator for IbanEx
 
 <!-- tool-usage-start -->
 ## Tool Usage Guidelines
@@ -50,7 +12,7 @@ env $(cat .test.env | xargs) iex -S mix
 <!-- tool-usage:code-start -->
 ### Code base analysys and semantic code search
 
-Register project to make Tree Sitter tool available for analyzing the Banker codebase and get next posibilities: 
+Register project to make Tree Sitter tool available for analyzing the IbanEx codebase and get next posibilities: 
 
 - **Search codebase**: Find files, functions, or patterns
 - **Understand architecture**: Explore modules, domains, resources
@@ -58,7 +20,7 @@ Register project to make Tree Sitter tool available for analyzing the Banker cod
 - **Quality analysis**: Detect complexity, duplication, dependencies
 - **Strategic exploration**: Understand domain structure and relationships
 
-**Always use tree_sitter_banker tool** for: 
+**Always use tree_sitter_iban_ex tool** for: 
 
   1. **Code Navigation**: Extract functions, classes, modules. Find where symbols are used. Search with regex patterns. Read file contents efficiently. Get abstract syntax trees
   2. **Analysis Tools**: Measure cyclomatic complexity. Find imports and dependencies. Detect code duplication. Execute tree-sitter queries
@@ -70,16 +32,6 @@ Register project to make Tree Sitter tool available for analyzing the Banker cod
 ### Documentation
 - **Always use HEXDocs tool** to get and analyze **actual documentation** for Elixir, Elixir libraries and Phoenix framework
 <!-- tool-usage:documentation-end -->
-
-<!-- tool-usage:database-start -->
-### Database Access
-- **Use only** postgres_banker_dev tool to comunicate with development database
-- **Use only** postgres_banker_test tool to comunicate with test database
-- **Only in case when** postgres_banker_dev or postgres_banker_test tools is unavaliable you can get data from databases directly:
-  - Development database: `psql banker_dev -c "<query>"`
-  - Test database: `psql banker_test -c "<query>"`
-- **NEVER** try do anything with production database. You are **FORBIDDEN** from execute any queries on prod environmemnt
-<!-- tool-usage:database-end -->
 
 <!-- tool-usage-end -->
 
@@ -125,7 +77,7 @@ Register project to make Tree Sitter tool available for analyzing the Banker cod
 - Elixir's standard library has everything necessary for date and time manipulation. Familiarize yourself with the common `Time`, `Date`, `DateTime`, and `Calendar` interfaces by accessing their documentation as necessary. **Never** install additional dependencies unless asked or for date/time parsing (which you can use the `date_time_parser` package)
 - Don't use `String.to_atom/1` on user input (memory leak risk)
 - Predicate function names should not start with `is_` and should end in a question mark. Names like `is_thing` should be reserved for guards
-- Elixir's builtin OTP primitives like `DynamicSupervisor` and `Registry`, require names in the child spec, such as `{DynamicSupervisor, name: Banker.MyDynamicSup}`, then you can use `DynamicSupervisor.start_child(Banker.MyDynamicSup, child_spec)`
+- Elixir's builtin OTP primitives like `DynamicSupervisor` and `Registry`, require names in the child spec, such as `{DynamicSupervisor, name: IbanEx.MyDynamicSup}`, then you can use `DynamicSupervisor.start_child(IbanEx.MyDynamicSup, child_spec)`
 - Use `Task.async_stream(collection, callback, options)` for concurrent enumeration with back-pressure. The majority of times you will want to pass `timeout: :infinity` as option
 - Elixir variables are immutable, but can be rebound, so for block expressions like `if`, `case`, `cond`, etc
   you *must* bind the result of the expression to a variable if you want to use it and you CANNOT rebind the result inside the expression, ie:
