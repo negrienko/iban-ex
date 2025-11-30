@@ -4,7 +4,7 @@ defmodule IbanEx.IbanFactory do
   Supports creating valid and invalid IBANs for comprehensive testing.
   """
 
-  alias IbanEx.{Iban, Country}
+  alias IbanEx.Parser
 
   @doc """
   Build an IBAN struct with custom attributes.
@@ -104,7 +104,7 @@ defmodule IbanEx.IbanFactory do
   # Private functions
 
   defp build_from_string(iban_string) do
-    case IbanEx.parse(iban_string) do
+    case Parser.parse(iban_string) do
       {:ok, iban} -> iban
       {:error, _} -> raise "Invalid IBAN string: #{iban_string}"
     end
@@ -117,7 +117,7 @@ defmodule IbanEx.IbanFactory do
     example_iban = get_example_iban(country_code)
 
     # Parse it to get the structure
-    {:ok, base_iban} = IbanEx.parse(example_iban)
+    {:ok, base_iban} = Parser.parse(example_iban)
 
     # Override with provided attributes
     %{

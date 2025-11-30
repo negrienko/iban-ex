@@ -179,7 +179,7 @@ defmodule IbanEx.RegistryValidationTest do
       # Verify they are actually numeric
       Enum.each(numeric_ibans, fn iban ->
         {:ok, parsed} = Parser.parse(iban)
-        bban = String.slice(iban, 4..-1//1
+        bban = String.slice(iban, 4..-1//1)
 
         assert bban =~ ~r/^\d+$/,
                "Expected numeric BBAN for #{parsed.country_code}, got: #{bban}"
@@ -194,7 +194,7 @@ defmodule IbanEx.RegistryValidationTest do
 
       # Verify they contain letters
       Enum.each(alphanumeric_ibans, fn iban ->
-        bban = String.slice(iban, 4..-1//1
+        bban = String.slice(iban, 4..-1//1)
 
         assert bban =~ ~r/[A-Z]/,
                "Expected alphanumeric BBAN for #{iban}, got: #{bban}"
