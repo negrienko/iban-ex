@@ -88,7 +88,7 @@ defmodule IbanEx.Parser do
   end
 
   defp parse_bban_by_country_rules(country_module, bban_string) do
-    for {field, rule} <- country_module.rules,
+    for {field, rule} <- country_module.rules(),
         into: %{},
         do: {field, normalize_and_slice(bban_string, rule.range)}
   end
