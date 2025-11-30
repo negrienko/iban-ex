@@ -62,7 +62,7 @@ defmodule IbanEx.MixProject do
       # Checks
       {:lettuce, "~> 0.3.0", only: :dev},
       {:ex_check, "~> 0.14.0", only: ~w(dev test)a, runtime: false},
-      {:credo, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
+      {:credo, "~> 1.7", only: ~w(dev test)a, runtime: false},
       {:dialyxir, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:doctor, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:ex_doc, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
