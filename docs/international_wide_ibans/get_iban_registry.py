@@ -6,7 +6,6 @@ from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
-
 COUNTRY_CODE_PATTERN = r"[A-Z]{2}"
 EMPTY_RANGE = (0, 0)
 URL = "https://www.swift.com/standards/data-standards/iban"
@@ -35,9 +34,13 @@ def parse(raw):
     for line in raw.split("\r\n"):
         header, *rows = line.split("\t")
         if header == "IBAN prefix country code (ISO 3166)":
-            columns["country"] = [re.search(COUNTRY_CODE_PATTERN, item).group() for item in rows]
+            columns["country"] = [
+                re.search(COUNTRY_CODE_PATTERN, item).group() for item in rows
+            ]
         elif header == "Country code includes other countries/territories":
-            columns["other_countries"] = [re.findall(COUNTRY_CODE_PATTERN, item) for item in rows]
+            columns["other_countries"] = [
+                re.findall(COUNTRY_CODE_PATTERN, item) for item in rows
+            ]
         elif header == "BBAN structure":
             columns["bban_spec"] = rows
         elif header == "BBAN length":
@@ -82,5 +85,5 @@ def process_positions(record):
 
 
 if __name__ == "__main__":
-    with open("schwifty/iban_registry/generated.json", "w+") as fp:
+    with open("iban_registry.json", "w+") as fp:
         json.dump(process(parse(get_raw())), fp, indent=2)
