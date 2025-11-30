@@ -25,7 +25,10 @@ defmodule IbanEx.Parser do
   def parse(iban_string, incomplete: false) do
     case Validator.validate(iban_string) do
       {:ok, valid_iban} ->
+        normalized = normalize_and_slice(valid_iban, 0..-1//1)
+
         iban_map = %{
+          iban: normalized,
           country_code: country_code(valid_iban),
           check_digits: check_digits(valid_iban)
         }
@@ -43,7 +46,10 @@ defmodule IbanEx.Parser do
   end
 
   def parse(iban_string, incomplete: true) do
+    normalized = normalize_and_slice(iban_string, 0..-1//1)
+
     iban_map = %{
+      iban: normalized,
       country_code: country_code(iban_string),
       check_digits: check_digits(iban_string)
     }
@@ -72,6 +78,7 @@ defmodule IbanEx.Parser do
         country_code
         |> Country.country_module()
         |> parse_bban_by_country_rules(bban_string)
+
       false ->
         %{}
     end
@@ -82,6 +89,7 @@ defmodule IbanEx.Parser do
       true ->
         Country.country_module(country_code).rule()
         |> parse_bban_by_regex(bban_string)
+
       false ->
         %{}
     end

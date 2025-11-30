@@ -187,11 +187,12 @@ defmodule IbanEx.ParserTest do
     test "correctly calculates positions for France (complex structure)" do
       {:ok, iban} = Parser.parse("FR1420041010050500013M02606")
 
-      # BBAN: 20041010050500013M02606
+      # Per SWIFT registry and Wise validation, France structure is:
+      # BBAN: 20041010050500013M02606 (23 chars)
       # Bank (5n): 20041
       # Branch (5n): 01005
       # Account (11c): 0500013M026
-      # Check (2n): 06
+      # National check (2n): 06
       assert iban.bank_code == "20041"
       assert iban.branch_code == "01005"
       assert iban.account_number == "0500013M026"
@@ -276,7 +277,7 @@ defmodule IbanEx.ParserTest do
         29,
         # Longest
         33
-]
+      ]
 
       Enum.each(length_samples, fn target_length ->
         ibans = TestData.ibans_with(length: target_length)
@@ -361,7 +362,9 @@ defmodule IbanEx.ParserTest do
     end
 
     test "parses French territories using FR rules" do
-      # French territories: GF, GP, MQ, RE, etc.
+      # French territories use FR as country code in IBAN, but are listed separately in registry
+      # Real IBANs for French territories start with "FR", not their territory code
+      # See: docs/international_wide_ibans/README.md - SEPA Countries Include Territories
       french_territories = [
         "GF",
         "GP",
@@ -375,7 +378,7 @@ defmodule IbanEx.ParserTest do
         "MF",
         "PM",
         "WF"
-]
+      ]
 
       Enum.each(french_territories, fn territory ->
         ibans = TestData.valid_ibans(country: territory)
@@ -383,8 +386,9 @@ defmodule IbanEx.ParserTest do
         if length(ibans) > 0 do
           iban = List.first(ibans)
           assert {:ok, parsed} = Parser.parse(iban)
-          assert parsed.country_code == territory
-          # Should follow FR structure
+          # Territory IBANs use "FR" as the country code in the actual IBAN
+          assert parsed.country_code == "FR"
+          # Should follow FR structure (27 chars)
           assert String.length(parsed.iban) == 27
         end
       end)
@@ -403,7 +407,12 @@ defmodule IbanEx.ParserTest do
         assert String.length(parsed.iban) == spec["iban_length"],
                "Length mismatch for #{country_code}"
 
-        assert parsed.country_code == country_code
+        # Extract actual country code from iban_spec (e.g., "FI2!n..." -> "FI")
+        # Territories like AX use parent country code (FI) in actual IBANs
+        expected_country_code = String.slice(spec["iban_spec"], 0..1)
+
+        assert parsed.country_code == expected_country_code,
+               "Country code mismatch for #{country_code}: expected #{expected_country_code}, got #{parsed.country_code}"
       end)
     end
 

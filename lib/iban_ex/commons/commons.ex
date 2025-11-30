@@ -19,6 +19,7 @@ defmodule IbanEx.Commons do
     string
     |> normalize()
     |> String.slice(range)
+
     # |> case do
     #   "" -> nil
     #   result -> result

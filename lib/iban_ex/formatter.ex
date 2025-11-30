@@ -8,7 +8,7 @@ defmodule IbanEx.Formatter do
 
   @type iban() :: IbanEx.Iban.t()
   @type available_format() :: :compact | :pretty | :splitted
-  @type available_formats_list() :: [:compact | :pretty | :splitted ]
+  @type available_formats_list() :: [:compact | :pretty | :splitted]
 
   @spec available_formats() :: available_formats_list()
   def available_formats(), do: @available_formats
@@ -25,6 +25,7 @@ defmodule IbanEx.Formatter do
   @spec format(iban()) :: String.t()
   @spec format(iban(), available_format()) :: String.t()
   def format(iban, format \\ :compact)
+
   def format(iban, :compact),
     do: format(iban, :pretty) |> normalize()
 

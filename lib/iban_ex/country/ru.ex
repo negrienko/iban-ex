@@ -40,4 +40,3 @@ defmodule IbanEx.Country.RU do
     |> Enum.join(joiner)
   end
 end
-

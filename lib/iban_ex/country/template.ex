@@ -93,7 +93,7 @@ defmodule IbanEx.Country.Template do
         {Enum.reverse(list), bban_length}
       end
 
-      defoverridable to_string: 1, to_string: 2, size: 0, rule: 0
+      defoverridable to_string: 1, to_string: 2, size: 0, rule: 0, rules: 0
     end
   end
 end

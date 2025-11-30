@@ -20,7 +20,7 @@ defmodule IbanEx.Validator do
       {&__MODULE__.iban_violates_account_number_format?/1, {:error, :invalid_account_number}},
       {&__MODULE__.iban_violates_branch_code_format?/1, {:error, :invalid_branch_code}},
       {&__MODULE__.iban_violates_national_check_format?/1, {:error, :invalid_national_check}},
-      {&__MODULE__.iban_violates_checksum?/1, {:error, :invalid_checksum}},
+      {&__MODULE__.iban_violates_checksum?/1, {:error, :invalid_checksum}}
     ]
 
   @doc """
@@ -39,7 +39,17 @@ defmodule IbanEx.Validator do
   @spec violations(String.t()) :: [] | [atom()]
   def violations(iban) do
     violation_functions()
-    |> Enum.reduce([], fn {fun, value}, acc -> error_accumulator(acc, !fun.(iban) or value) end)
+    |> Enum.reduce([], fn {fun, value}, acc ->
+      # Special handling for length check to get specific :length_to_short or :length_to_long
+      if fun == (&__MODULE__.iban_violates_length?/1) do
+        case check_iban_length(iban) do
+          {:error, atom} when atom in [:length_to_short, :length_to_long] -> [atom | acc]
+          _ -> acc
+        end
+      else
+        error_accumulator(acc, !fun.(iban) or value)
+      end
+    end)
     |> Enum.reverse()
   end
 
@@ -92,9 +102,22 @@ defmodule IbanEx.Validator do
   end
 
   # - Check whether a given IBAN violates the required format.
-  @spec iban_violates_format?(String.t()) :: boolean
-  def iban_violates_format?(iban),
-    do: Regex.match?(~r/[^A-Z0-9]/i, normalize(iban))
+  @spec iban_violates_format?(String.t() | nil) :: boolean
+  def iban_violates_format?(nil), do: true
+
+  def iban_violates_format?(iban) when is_binary(iban) do
+    # Remove spaces first but don't uppercase yet
+    cleaned = String.replace(iban, ~r/\s/, "")
+    # Check that country code (first 2 chars) are uppercase only
+    country_code = String.slice(cleaned, 0..1)
+    country_code_lowercase = country_code != String.upcase(country_code)
+
+    # Check for invalid characters (after normalization)
+    normalized = normalize(iban)
+    has_invalid_chars = Regex.match?(~r/[^A-Z0-9]/, normalized)
+
+    has_invalid_chars or country_code_lowercase
+  end
 
   # - Check whether a given IBAN violates the required format in bank_code.
   @spec iban_violates_bank_code_format?(binary()) :: boolean
@@ -102,22 +125,25 @@ defmodule IbanEx.Validator do
 
   # - Check whether a given IBAN violates the required format in branch_code.
   @spec iban_violates_branch_code_format?(binary()) :: boolean
-  def iban_violates_branch_code_format?(iban), do: iban_violates_bban_part_format?(iban, :branch_code)
+  def iban_violates_branch_code_format?(iban),
+    do: iban_violates_bban_part_format?(iban, :branch_code)
 
   # - Check whether a given IBAN violates the required format in account_number.
   @spec iban_violates_account_number_format?(binary()) :: boolean
-  def iban_violates_account_number_format?(iban), do: iban_violates_bban_part_format?(iban, :account_number)
+  def iban_violates_account_number_format?(iban),
+    do: iban_violates_bban_part_format?(iban, :account_number)
 
   # - Check whether a given IBAN violates the required format in national_check.
   @spec iban_violates_national_check_format?(binary()) :: boolean
-  def iban_violates_national_check_format?(iban), do: iban_violates_bban_part_format?(iban, :national_check)
+  def iban_violates_national_check_format?(iban),
+    do: iban_violates_bban_part_format?(iban, :national_check)
 
   defp iban_violates_bban_part_format?(iban, part) do
-    with  country <- Parser.country_code(iban),
-          bban <- Parser.bban(iban),
-          true <- Country.is_country_code_supported?(country),
-          country_module <- Country.country_module(country),
-          {:ok, rule} <- Map.fetch(country_module.rules_map(), part) do
+    with country <- Parser.country_code(iban),
+         bban <- Parser.bban(iban),
+         true <- Country.is_country_code_supported?(country),
+         country_module <- Country.country_module(country),
+         {:ok, rule} <- Map.fetch(country_module.rules_map(), part) do
       !Regex.match?(rule.regex, normalize_and_slice(bban, rule.range))
     else
       _ -> false

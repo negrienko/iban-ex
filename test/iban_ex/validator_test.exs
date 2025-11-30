@@ -67,9 +67,9 @@ defmodule IbanEx.ValidatorTest do
 
     test "returns false for invalid characters in BBAN" do
       # Cyrillic character
-      refute TestData.valid?("DE89370400440532013Ї00") 
- #     CInvalcdchara in shorerst
-      refute TestData.valid?("NO938601111794Ї") 
+      refute TestData.valid?("DE89370400440532013Ї00")
+      #     CInvalcdchara in shorerst
+      refute TestData.valid?("NO938601111794Ї")
     end
 
     test "returns false for lowercase country code" do

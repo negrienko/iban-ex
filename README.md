@@ -15,6 +15,7 @@ In just a few letters and numbers, the IBAN captures all of the country, bank, a
   ```elixir
       iex>  "FI2112345600000785" |> IbanEx.Parser.parse()
       {:ok, %IbanEx.Iban{
+        iban: "FI2112345600000785",
         country_code: "FI",
         check_digits: "21",
         bank_code: "123456",

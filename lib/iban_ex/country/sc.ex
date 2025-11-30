@@ -22,6 +22,14 @@ defmodule IbanEx.Country.SC do
 
   use IbanEx.Country.Template
 
+  def rules() do
+    [
+      bank_code: %{regex: ~r/[A-Z0-9]{6}/i, range: 0..5},
+      branch_code: %{regex: ~r/[0-9]{2}/i, range: 6..7},
+      account_number: %{regex: ~r/[0-9A-Z]{19}/i, range: 8..26}
+    ]
+  end
+
   @impl IbanEx.Country.Template
   @spec to_string(Iban.t()) :: binary()
   @spec to_string(Iban.t(), binary()) :: binary()

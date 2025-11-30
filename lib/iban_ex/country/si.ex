@@ -23,7 +23,6 @@ defmodule IbanEx.Country.SI do
 
   use IbanEx.Country.Template
 
-
   @impl IbanEx.Country.Template
   @spec to_string(Iban.t()) :: binary()
   @spec to_string(Iban.t(), binary()) :: binary()
@@ -41,5 +40,4 @@ defmodule IbanEx.Country.SI do
     [country_code, check_digits, bank_code, branch_code, account_number, national_check]
     |> Enum.join(joiner)
   end
-
 end

@@ -27,7 +27,7 @@ defmodule IbanEx.Error do
     :invalid_account_number,
     :invalid_branch_code,
     :invalid_national_check
-]
+  ]
 
   @messages [
     unsupported_country_code: "Unsupported country code",
@@ -40,8 +40,8 @@ defmodule IbanEx.Error do
     invalid_bank_code: "Bank code violates required format",
     invalid_account_number: "Account number violates required format",
     invalid_branch_code: "Branch code violates required format",
-    invalid_national_check: "National check symbols violates required format",
-]
+    invalid_national_check: "National check symbols violates required format"
+  ]
 
   @spec message(error()) :: String.t()
   def message(error) when error in @errors, do: @messages[error]

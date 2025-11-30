@@ -23,4 +23,3 @@ defmodule IbanEx.Country.PS do
 
   use IbanEx.Country.Template
 end
-

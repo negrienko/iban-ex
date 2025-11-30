@@ -1,7 +1,7 @@
 defmodule IbanExTest do
   use ExUnit.Case, async: true
 
-  doctest_file "README.md"
+  doctest_file("README.md")
   doctest IbanEx.Country.AD
   doctest IbanEx.Country.AE
   doctest IbanEx.Country.AL
