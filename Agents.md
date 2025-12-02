@@ -182,3 +182,6 @@ Register project to make Tree Sitter tool available for analyzing the IbanEx cod
   - ✓ Pattern matching in single line comments
 </cicada>
 
+
+
+> **Note:** cicada-mcp tools are currently unavailable in this environment (not listed via `list_mcp_resources`). Once they become accessible, switch to them immediately for all required code-search tasks.
