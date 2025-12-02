@@ -1,6 +1,4 @@
 defmodule IbanEx.Country.IS do
-  # TODO Iceland IBAN contains identification number (last 10 digits of account number)
-
   @moduledoc """
   Island IBAN parsing rules
 

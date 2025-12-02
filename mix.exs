@@ -33,7 +33,8 @@ defmodule IbanEx.MixProject do
 
   defp dialyzer() do
     [
-      plt_add_apps: [:iban_ex]
+      plt_add_apps: [:iban_ex],
+      ignore_warnings: ".dialyzer_ignore.exs"
     ]
   end
 
@@ -52,6 +53,7 @@ defmodule IbanEx.MixProject do
       source_ref: "v#{@version}",
       canonical: "http://hexdocs.pm/iban_ex",
       source_url: @source_url,
+      homepage_url: @source_url,
       extras: ["README.md"]
     ]
   end

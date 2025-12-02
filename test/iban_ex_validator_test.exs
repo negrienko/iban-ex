@@ -107,7 +107,7 @@ defmodule IbanExValidatorTest do
       # invalid characters (leters) in number
       {"BR18003603050000100097CC1", true},
       {"CR050152020010262806Ї", true}
-      # FIXME it is invalid IBAN for Bulgaria — need to change a rules function in Country Template module
+      # NOTE: it is invalid IBAN for Bulgaria — need to change a rules function in Country Template module
       # {"BG80BNBG9661102034567Ї", true},
     ]
 
