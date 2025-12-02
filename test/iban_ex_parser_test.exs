@@ -97,7 +97,7 @@ defmodule IbanExParserTest do
   test "parsing invalid IBANs from unavailable countries returns {:error, :unsupported_country_code}" do
     invalid_ibans =
       [
-        # Fake country codes (removed SD, GF, AX, BY, DJ, HN, IQ, LC, ST, TN - now supported)
+        # Fake country codes - countries that don't exist or don't use IBAN
         "SU56263300012039086",
         "ZZ9121000418450200051332",
         "FU4550000000058398257466",
@@ -130,18 +130,22 @@ defmodule IbanExParserTest do
         "NE31120000001987426375413750",
         "SN31120000001987426375413750",
         "TD3112000000198742637541375",
-        "TF3112000000198742637541375",
-        "TG31120000001987426375413750",
-        "WF3112000000198742637541375",
-        "YT3112000000198742637541375"
+        "TG31120000001987426375413750"
       ]
 
-    Enum.all?(
-      invalid_ibans,
-      &assert(
-        match?({:error, :unsupported_country_code}, Parser.parse(&1)),
-        "expected #{&1} to match {:error, :unsupported_country_code}"
+    result =
+      Enum.all?(
+        invalid_ibans,
+        fn iban ->
+          case Parser.parse(iban) do
+            {:error, :unsupported_country_code} -> true
+            other ->
+              IO.puts("Unexpected result for #{iban}: #{inspect(other)}")
+              false
+          end
+        end
       )
-    )
+
+    assert result, "Some IBANs did not return {:error, :unsupported_country_code}"
   end
 end

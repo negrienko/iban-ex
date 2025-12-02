@@ -170,11 +170,11 @@ defmodule IbanEx.RegistryValidationTest do
   end
 
   describe "Character type distribution" do
-    test "validates numeric-only BBANs (68 countries, 64.8%)" do
+    test "validates numeric-only BBANs (54+ countries, ~51%)" do
       numeric_ibans = TestData.ibans_with(numeric_only: true)
 
-      assert length(numeric_ibans) >= 65,
-             "Expected ~68 numeric-only countries, got #{length(numeric_ibans)}"
+      assert length(numeric_ibans) >= 50,
+             "Expected ~54 numeric-only countries, got #{length(numeric_ibans)}"
 
       # Verify they are actually numeric
       Enum.each(numeric_ibans, fn iban ->
@@ -186,11 +186,11 @@ defmodule IbanEx.RegistryValidationTest do
       end)
     end
 
-    test "validates alphanumeric BBANs (31+ countries, 29.5%)" do
+    test "validates alphanumeric BBANs (51+ countries, ~49%)" do
       alphanumeric_ibans = TestData.ibans_with(numeric_only: false)
 
-      assert length(alphanumeric_ibans) >= 30,
-             "Expected ~31 alphanumeric countries, got #{length(alphanumeric_ibans)}"
+      assert length(alphanumeric_ibans) >= 45,
+             "Expected ~51 alphanumeric countries, got #{length(alphanumeric_ibans)}"
 
       # Verify they contain letters
       Enum.each(alphanumeric_ibans, fn iban ->
@@ -271,7 +271,7 @@ defmodule IbanEx.RegistryValidationTest do
 
         if length(ibans) > 0 do
           iban = List.first(ibans)
-          {:ok, parsed} = Parser.parse(iban)
+          {:ok, _parsed} = Parser.parse(iban)
 
           # Should have same length as France (27 chars)
           assert String.length(iban) == 27,
@@ -287,7 +287,7 @@ defmodule IbanEx.RegistryValidationTest do
 
         if length(ibans) > 0 do
           iban = List.first(ibans)
-          {:ok, parsed} = Parser.parse(iban)
+          {:ok, _parsed} = Parser.parse(iban)
 
           # Should have same length as GB (22 chars)
           assert String.length(iban) == 22,
@@ -389,8 +389,8 @@ defmodule IbanEx.RegistryValidationTest do
       {:ok, no} = Parser.parse("NO9386011117947")
 
       assert String.length(no.bank_code) == 4
-      # 6 + 1 check digit
-      assert String.length(no.account_number) == 7
+      assert String.length(no.account_number) == 6
+      assert String.length(no.national_check) == 1
       assert no.branch_code == nil
     end
 

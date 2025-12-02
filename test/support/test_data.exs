@@ -212,7 +212,11 @@ defmodule IbanEx.TestData do
 
   defp filter_by_numeric_only(specs, numeric_only) do
     Enum.filter(specs, fn {_code, spec} ->
-      is_numeric_only?(spec["bban_spec"]) == numeric_only
+      # Use numeric_only field if available, otherwise fall back to bban_spec check
+      case spec["numeric_only"] do
+        nil -> is_numeric_only?(spec["bban_spec"]) == numeric_only
+        value -> value == numeric_only
+      end
     end)
   end
 
@@ -222,7 +226,8 @@ defmodule IbanEx.TestData do
   end
 
   defp has_national_check?(spec) do
-    Map.has_key?(spec["positions"], "national_check")
+    positions = spec["positions"]["national_check"]
+    positions != nil and positions["start"] != positions["end"]
   end
 
   defp is_numeric_only?(bban_spec) do

@@ -1,0 +1,2000 @@
+{
+  "country_specs": {
+    "TF": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "French Southern Territories",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "IT": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Italy",
+      "iban_length": 27,
+      "iban_spec": "IT2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 27, "start": 15 },
+        "bank_code": { "end": 10, "start": 5 },
+        "branch_code": { "end": 15, "start": 10 },
+        "national_check": { "end": 5, "start": 4 }
+      },
+      "sepa": true
+    },
+    "BR": {
+      "bban_length": 25,
+      "bban_spec": "varies",
+      "country_name": "Brazil",
+      "iban_length": 29,
+      "iban_spec": "BR2!n25!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 29, "start": 17 },
+        "bank_code": { "end": 12, "start": 4 },
+        "branch_code": { "end": 17, "start": 12 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "SO": {
+      "bban_length": 19,
+      "bban_spec": "varies",
+      "country_name": "Somalia",
+      "iban_length": 23,
+      "iban_spec": "SO2!n19!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 23, "start": 11 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 11, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "PM": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Saint Pierre and Miquelon",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "EG": {
+      "bban_length": 25,
+      "bban_spec": "varies",
+      "country_name": "Egypt",
+      "iban_length": 29,
+      "iban_spec": "EG2!n25!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 29, "start": 12 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 12, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "DJ": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Djibouti",
+      "iban_length": 27,
+      "iban_spec": "DJ2!n23!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 13, "start": 8 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": false
+    },
+    "RO": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Romania",
+      "iban_length": 24,
+      "iban_spec": "RO2!n20!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 24, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "FO": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Faroe Islands",
+      "iban_length": 18,
+      "iban_spec": "FO2!n14!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 17, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 6, "start": 5 }
+      },
+      "sepa": false
+    },
+    "DK": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Denmark",
+      "iban_length": 18,
+      "iban_spec": "DK2!n14!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 18, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "XK": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Kosovo",
+      "iban_length": 20,
+      "iban_spec": "XK2!n16!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 18, "start": 8 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 6, "start": 4 },
+        "national_check": { "end": 20, "start": 18 }
+      },
+      "sepa": false
+    },
+    "TN": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Tunisia",
+      "iban_length": 24,
+      "iban_spec": "TN2!n20!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 22, "start": 9 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 9, "start": 6 },
+        "national_check": { "end": 24, "start": 22 }
+      },
+      "sepa": false
+    },
+    "CY": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Cyprus",
+      "iban_length": 28,
+      "iban_spec": "CY2!n24!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 28, "start": 12 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 12, "start": 7 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "PS": {
+      "bban_length": 25,
+      "bban_spec": "varies",
+      "country_name": "Palestine",
+      "iban_length": 29,
+      "iban_spec": "PS2!n25!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 29, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "PT": {
+      "bban_length": 21,
+      "bban_spec": "varies",
+      "country_name": "Portugal",
+      "iban_length": 25,
+      "iban_spec": "PT2!n21!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 23, "start": 12 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 12, "start": 8 },
+        "national_check": { "end": 25, "start": 23 }
+      },
+      "sepa": true
+    },
+    "CR": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Costa Rica",
+      "iban_length": 22,
+      "iban_spec": "CR2!n18!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 22, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "MF": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Saint Martin",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "BG": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Bulgaria",
+      "iban_length": 22,
+      "iban_spec": "BG2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 12 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 12, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "SM": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "San Marino",
+      "iban_length": 27,
+      "iban_spec": "SM2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 27, "start": 15 },
+        "bank_code": { "end": 10, "start": 5 },
+        "branch_code": { "end": 15, "start": 10 },
+        "national_check": { "end": 5, "start": 4 }
+      },
+      "sepa": true
+    },
+    "ES": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Spain",
+      "iban_length": 24,
+      "iban_spec": "ES2!n20!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 24, "start": 14 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 12, "start": 8 },
+        "national_check": { "end": 14, "start": 12 }
+      },
+      "sepa": true
+    },
+    "GF": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "French Guiana",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "WF": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Wallis and Futuna",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "DO": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Dominican Republic",
+      "iban_length": 28,
+      "iban_spec": "DO2!n24!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "DE": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Germany",
+      "iban_length": 22,
+      "iban_spec": "DE2!n18!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 22, "start": 12 },
+        "bank_code": { "end": 12, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "TL": {
+      "bban_length": 19,
+      "bban_spec": "varies",
+      "country_name": "Timor-Leste",
+      "iban_length": 23,
+      "iban_spec": "TL2!n19!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 21, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 23, "start": 21 }
+      },
+      "sepa": false
+    },
+    "FR": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "France",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "RU": {
+      "bban_length": 29,
+      "bban_spec": "varies",
+      "country_name": "Russia",
+      "iban_length": 33,
+      "iban_spec": "RU2!n29!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 33, "start": 18 },
+        "bank_code": { "end": 13, "start": 4 },
+        "branch_code": { "end": 18, "start": 13 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "ST": {
+      "bban_length": 21,
+      "bban_spec": "varies",
+      "country_name": "São Tomé and Príncipe",
+      "iban_length": 25,
+      "iban_spec": "ST2!n21!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 23, "start": 12 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 8, "start": 4 },
+        "national_check": { "end": 25, "start": 23 }
+      },
+      "sepa": false
+    },
+    "UA": {
+      "bban_length": 25,
+      "bban_spec": "varies",
+      "country_name": "Ukraine",
+      "iban_length": 29,
+      "iban_spec": "UA2!n25!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 29, "start": 10 },
+        "bank_code": { "end": 10, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "FI": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Finland",
+      "iban_length": 18,
+      "iban_spec": "FI2!n14!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 17, "start": 10 },
+        "bank_code": { "end": 10, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 9, "start": 8 }
+      },
+      "sepa": true
+    },
+    "NL": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Netherlands",
+      "iban_length": 18,
+      "iban_spec": "NL2!n14!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 18, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "JE": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Jersey",
+      "iban_length": 22,
+      "iban_spec": "GB2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 14 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 14, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "VA": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Vatican City",
+      "iban_length": 22,
+      "iban_spec": "VA2!n18!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 22, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "IE": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Ireland",
+      "iban_length": 22,
+      "iban_spec": "IE2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 14 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 14, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "RS": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Serbia",
+      "iban_length": 22,
+      "iban_spec": "RS2!n18!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 20, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 22, "start": 20 }
+      },
+      "sepa": false
+    },
+    "HR": {
+      "bban_length": 17,
+      "bban_spec": "varies",
+      "country_name": "Croatia",
+      "iban_length": 21,
+      "iban_spec": "HR2!n17!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 21, "start": 11 },
+        "bank_code": { "end": 11, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "AX": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Åland Islands",
+      "iban_length": 18,
+      "iban_spec": "FI2!n14!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 17, "start": 10 },
+        "bank_code": { "end": 10, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 9, "start": 8 }
+      },
+      "sepa": true
+    },
+    "PF": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "French Polynesia",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "SC": {
+      "bban_length": 27,
+      "bban_spec": "varies",
+      "country_name": "Seychelles",
+      "iban_length": 31,
+      "iban_spec": "SC2!n27!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 31, "start": 12 },
+        "bank_code": { "end": 10, "start": 4 },
+        "branch_code": { "end": 12, "start": 10 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "SE": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Sweden",
+      "iban_length": 24,
+      "iban_spec": "SE2!n20!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 24, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "PK": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Pakistan",
+      "iban_length": 24,
+      "iban_spec": "PK2!n20!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 24, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "ME": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Montenegro",
+      "iban_length": 22,
+      "iban_spec": "ME2!n18!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 20, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 22, "start": 20 }
+      },
+      "sepa": false
+    },
+    "GP": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Guadeloupe",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "GR": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Greece",
+      "iban_length": 27,
+      "iban_spec": "GR2!n23!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 27, "start": 11 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 11, "start": 7 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "LB": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Lebanon",
+      "iban_length": 28,
+      "iban_spec": "LB2!n24!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "BH": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Bahrain",
+      "iban_length": 22,
+      "iban_spec": "BH2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "YT": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Mayotte",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "MU": {
+      "bban_length": 26,
+      "bban_spec": "varies",
+      "country_name": "Mauritius",
+      "iban_length": 30,
+      "iban_spec": "MU2!n26!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 30, "start": 12 },
+        "bank_code": { "end": 10, "start": 4 },
+        "branch_code": { "end": 10, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "MQ": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Martinique",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "BA": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Bosnia and Herzegovina",
+      "iban_length": 20,
+      "iban_spec": "BA2!n16!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 18, "start": 10 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 10, "start": 7 },
+        "national_check": { "end": 12, "start": 10 }
+      },
+      "sepa": false
+    },
+    "BI": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Burundi",
+      "iban_length": 27,
+      "iban_spec": "BI2!n23!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": false
+    },
+    "MT": {
+      "bban_length": 27,
+      "bban_spec": "varies",
+      "country_name": "Malta",
+      "iban_length": 31,
+      "iban_spec": "MT2!n27!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 31, "start": 13 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 13, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "JO": {
+      "bban_length": 26,
+      "bban_spec": "varies",
+      "country_name": "Jordan",
+      "iban_length": 30,
+      "iban_spec": "JO2!n26!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 30, "start": 12 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 12, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "GL": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Greenland",
+      "iban_length": 18,
+      "iban_spec": "GL2!n14!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 18, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "LY": {
+      "bban_length": 21,
+      "bban_spec": "varies",
+      "country_name": "Libya",
+      "iban_length": 25,
+      "iban_spec": "LY2!n21!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 25, "start": 10 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 10, "start": 7 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "KZ": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Kazakhstan",
+      "iban_length": 20,
+      "iban_spec": "KZ2!n16!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 20, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "MN": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Mongolia",
+      "iban_length": 20,
+      "iban_spec": "MN2!n16!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 20, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "GT": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Guatemala",
+      "iban_length": 28,
+      "iban_spec": "GT2!n24!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "SD": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Sudan",
+      "iban_length": 18,
+      "iban_spec": "SD2!n14!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 18, "start": 6 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "LV": {
+      "bban_length": 17,
+      "bban_spec": "varies",
+      "country_name": "Latvia",
+      "iban_length": 21,
+      "iban_spec": "LV2!n17!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 21, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "BE": {
+      "bban_length": 12,
+      "bban_spec": "varies",
+      "country_name": "Belgium",
+      "iban_length": 16,
+      "iban_spec": "BE2!n12!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 14, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 16, "start": 14 }
+      },
+      "sepa": true
+    },
+    "NC": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "New Caledonia",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "GG": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Guernsey",
+      "iban_length": 22,
+      "iban_spec": "GB2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 14 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 14, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "IM": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Isle of Man",
+      "iban_length": 22,
+      "iban_spec": "GB2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 14 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 14, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "NO": {
+      "bban_length": 11,
+      "bban_spec": "varies",
+      "country_name": "Norway",
+      "iban_length": 15,
+      "iban_spec": "NO2!n11!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 14, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 12, "start": 11 }
+      },
+      "sepa": true
+    },
+    "CZ": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Czechia",
+      "iban_length": 24,
+      "iban_spec": "CZ2!n20!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 24, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "SI": {
+      "bban_length": 15,
+      "bban_spec": "varies",
+      "country_name": "Slovenia",
+      "iban_length": 19,
+      "iban_spec": "SI2!n15!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 17, "start": 9 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 9, "start": 6 },
+        "national_check": { "end": 19, "start": 17 }
+      },
+      "sepa": true
+    },
+    "LC": {
+      "bban_length": 28,
+      "bban_spec": "varies",
+      "country_name": "Saint Lucia",
+      "iban_length": 32,
+      "iban_spec": "LC2!n28!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 32, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "MK": {
+      "bban_length": 15,
+      "bban_spec": "varies",
+      "country_name": "North Macedonia",
+      "iban_length": 19,
+      "iban_spec": "MK2!n15!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 17, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 19, "start": 17 }
+      },
+      "sepa": false
+    },
+    "HN": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Honduras",
+      "iban_length": 28,
+      "iban_spec": "HN2!n24!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "SA": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Saudi Arabia",
+      "iban_length": 24,
+      "iban_spec": "SA2!n20!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 24, "start": 6 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "MD": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Moldova",
+      "iban_length": 24,
+      "iban_spec": "MD2!n20!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 24, "start": 6 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "AE": {
+      "bban_length": 19,
+      "bban_spec": "varies",
+      "country_name": "United Arab Emirates",
+      "iban_length": 23,
+      "iban_spec": "AE2!n19!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 23, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "IS": {
+      "bban_length": 22,
+      "bban_spec": "varies",
+      "country_name": "Iceland",
+      "iban_length": 26,
+      "iban_spec": "IS2!n22!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 26, "start": 10 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 10, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "EE": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Estonia",
+      "iban_length": 20,
+      "iban_spec": "EE2!n16!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 19, "start": 8 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 8, "start": 6 },
+        "national_check": { "end": 17, "start": 16 }
+      },
+      "sepa": true
+    },
+    "KW": {
+      "bban_length": 26,
+      "bban_spec": "varies",
+      "country_name": "Kuwait",
+      "iban_length": 30,
+      "iban_spec": "KW2!n26!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 30, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "NI": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Nicaragua",
+      "iban_length": 28,
+      "iban_spec": "NI2!n24!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "IQ": {
+      "bban_length": 19,
+      "bban_spec": "varies",
+      "country_name": "Iraq",
+      "iban_length": 23,
+      "iban_spec": "IQ2!n19!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 23, "start": 11 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 11, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "AD": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Andorra",
+      "iban_length": 24,
+      "iban_spec": "AD2!n20!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 24, "start": 12 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 12, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "MC": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Monaco",
+      "iban_length": 27,
+      "iban_spec": "MC2!n23!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "LU": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Luxembourg",
+      "iban_length": 20,
+      "iban_spec": "LU2!n16!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 20, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "IL": {
+      "bban_length": 19,
+      "bban_spec": "varies",
+      "country_name": "Israel",
+      "iban_length": 23,
+      "iban_spec": "IL2!n19!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 23, "start": 10 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 10, "start": 7 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "GB": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "United Kingdom",
+      "iban_length": 22,
+      "iban_spec": "GB2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 14 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 14, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "GE": {
+      "bban_length": 18,
+      "bban_spec": "varies",
+      "country_name": "Georgia",
+      "iban_length": 22,
+      "iban_spec": "GE2!n18!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 22, "start": 6 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "VG": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "British Virgin Islands",
+      "iban_length": 24,
+      "iban_spec": "VG2!n20!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 24, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "FK": {
+      "bban_length": 14,
+      "bban_spec": "varies",
+      "country_name": "Falkland Islands",
+      "iban_length": 18,
+      "iban_spec": "FK2!n14!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 18, "start": 6 },
+        "bank_code": { "end": 6, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "BL": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Saint Barthélemy",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "AL": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Albania",
+      "iban_length": 28,
+      "iban_spec": "AL2!n24!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 28, "start": 12 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 11, "start": 7 },
+        "national_check": { "end": 12, "start": 11 }
+      },
+      "sepa": false
+    },
+    "LT": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Lithuania",
+      "iban_length": 20,
+      "iban_spec": "LT2!n16!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 20, "start": 9 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "SK": {
+      "bban_length": 20,
+      "bban_spec": "varies",
+      "country_name": "Slovakia",
+      "iban_length": 24,
+      "iban_spec": "SK2!n20!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 24, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "GI": {
+      "bban_length": 19,
+      "bban_spec": "varies",
+      "country_name": "Gibraltar",
+      "iban_length": 23,
+      "iban_spec": "GI2!n19!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 23, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "LI": {
+      "bban_length": 17,
+      "bban_spec": "varies",
+      "country_name": "Liechtenstein",
+      "iban_length": 21,
+      "iban_spec": "LI2!n17!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 21, "start": 9 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "RE": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Réunion",
+      "iban_length": 27,
+      "iban_spec": "FR2!n23!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": true
+    },
+    "SV": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "El Salvador",
+      "iban_length": 28,
+      "iban_spec": "SV2!n24!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "AT": {
+      "bban_length": 16,
+      "bban_spec": "varies",
+      "country_name": "Austria",
+      "iban_length": 20,
+      "iban_spec": "AT2!n16!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 20, "start": 9 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "OM": {
+      "bban_length": 19,
+      "bban_spec": "varies",
+      "country_name": "Oman",
+      "iban_length": 23,
+      "iban_spec": "OM2!n19!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 23, "start": 7 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "PL": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Poland",
+      "iban_length": 28,
+      "iban_spec": "PL2!n24!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 28, "start": 12 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 11, "start": 7 },
+        "national_check": { "end": 12, "start": 11 }
+      },
+      "sepa": true
+    },
+    "TR": {
+      "bban_length": 22,
+      "bban_spec": "varies",
+      "country_name": "Turkey",
+      "iban_length": 26,
+      "iban_spec": "TR2!n22!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 26, "start": 10 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 5, "start": 4 }
+      },
+      "sepa": false
+    },
+    "BY": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Belarus",
+      "iban_length": 28,
+      "iban_spec": "BY2!n24!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "AZ": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Azerbaijan",
+      "iban_length": 28,
+      "iban_spec": "AZ2!n24!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 28, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "HU": {
+      "bban_length": 24,
+      "bban_spec": "varies",
+      "country_name": "Hungary",
+      "iban_length": 28,
+      "iban_spec": "HU2!n24!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 27, "start": 11 },
+        "bank_code": { "end": 7, "start": 4 },
+        "branch_code": { "end": 11, "start": 7 },
+        "national_check": { "end": 10, "start": 9 }
+      },
+      "sepa": true
+    },
+    "CH": {
+      "bban_length": 17,
+      "bban_spec": "varies",
+      "country_name": "Switzerland",
+      "iban_length": 21,
+      "iban_spec": "CH2!n17!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 21, "start": 9 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": true
+    },
+    "MR": {
+      "bban_length": 23,
+      "bban_spec": "varies",
+      "country_name": "Mauritania",
+      "iban_length": 27,
+      "iban_spec": "MR2!n23!c",
+      "numeric_only": true,
+      "positions": {
+        "account_number": { "end": 25, "start": 14 },
+        "bank_code": { "end": 9, "start": 4 },
+        "branch_code": { "end": 14, "start": 9 },
+        "national_check": { "end": 27, "start": 25 }
+      },
+      "sepa": false
+    },
+    "QA": {
+      "bban_length": 25,
+      "bban_spec": "varies",
+      "country_name": "Qatar",
+      "iban_length": 29,
+      "iban_spec": "QA2!n25!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 29, "start": 8 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 0, "start": 0 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    },
+    "YE": {
+      "bban_length": 26,
+      "bban_spec": "varies",
+      "country_name": "Yemen",
+      "iban_length": 30,
+      "iban_spec": "YE2!n26!c",
+      "numeric_only": false,
+      "positions": {
+        "account_number": { "end": 30, "start": 12 },
+        "bank_code": { "end": 8, "start": 4 },
+        "branch_code": { "end": 12, "start": 8 },
+        "national_check": { "end": 0, "start": 0 }
+      },
+      "sepa": false
+    }
+  },
+  "metadata": {
+    "generated_at": "2025-12-02T15:54:15.380889Z",
+    "sepa_countries": 53,
+    "source": "SWIFT IBAN Registry",
+    "total_countries": 105
+  },
+  "valid_ibans": {
+    "TF": {
+      "country_name": "French Southern Territories",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "IT": {
+      "country_name": "Italy",
+      "electronic": "IT60X0542811101000000123456",
+      "print": "IT60 X054 2811 1010 0000 0123 456"
+    },
+    "BR": {
+      "country_name": "Brazil",
+      "electronic": "BR1800360305000010009795493C1",
+      "print": "BR18 0036 0305 0000 1000 9795 493C 1"
+    },
+    "SO": {
+      "country_name": "Somalia",
+      "electronic": "SO211000001001000100141",
+      "print": "SO21 1000 0010 0100 0100 141"
+    },
+    "PM": {
+      "country_name": "Saint Pierre and Miquelon",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "EG": {
+      "country_name": "Egypt",
+      "electronic": "EG380019000500000000263180002",
+      "print": "EG38 0019 0005 0000 0000 2631 8000 2"
+    },
+    "DJ": {
+      "country_name": "Djibouti",
+      "electronic": "DJ2100010000000154000100186",
+      "print": "DJ21 0001 0000 0001 5400 0100 186"
+    },
+    "RO": {
+      "country_name": "Romania",
+      "electronic": "RO49AAAA1B31007593840000",
+      "print": "RO49 AAAA 1B31 0075 9384 0000"
+    },
+    "FO": { "country_name": "Faroe Islands", "electronic": "FO6264600001631634", "print": "FO62 6460 0001 6316 34" },
+    "DK": { "country_name": "Denmark", "electronic": "DK5000400440116243", "print": "DK50 0040 0440 1162 43" },
+    "XK": { "country_name": "Kosovo", "electronic": "XK051212012345678906", "print": "XK05 1212 0123 4567 8906" },
+    "TN": {
+      "country_name": "Tunisia",
+      "electronic": "TN5910006035183598478831",
+      "print": "TN59 1000 6035 1835 9847 8831"
+    },
+    "CY": {
+      "country_name": "Cyprus",
+      "electronic": "CY17002001280000001200527600",
+      "print": "CY17 0020 0128 0000 0012 0052 7600"
+    },
+    "PS": {
+      "country_name": "Palestine",
+      "electronic": "PS92PALS000000000400123456702",
+      "print": "PS92 PALS 0000 0000 0400 1234 5670 2"
+    },
+    "PT": {
+      "country_name": "Portugal",
+      "electronic": "PT50000201231234567890154",
+      "print": "PT50 0002 0123 1234 5678 9015 4"
+    },
+    "CR": {
+      "country_name": "Costa Rica",
+      "electronic": "CR05015202001026284066",
+      "print": "CR05 0152 0200 1026 2840 66"
+    },
+    "MF": {
+      "country_name": "Saint Martin",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "BG": {
+      "country_name": "Bulgaria",
+      "electronic": "BG80BNBG96611020345678",
+      "print": "BG80 BNBG 9661 1020 3456 78"
+    },
+    "SM": {
+      "country_name": "San Marino",
+      "electronic": "SM86U0322509800000000270100",
+      "print": "SM86 U032 2509 8000 0000 0270 100"
+    },
+    "ES": {
+      "country_name": "Spain",
+      "electronic": "ES9121000418450200051332",
+      "print": "ES91 2100 0418 4502 0005 1332"
+    },
+    "GF": {
+      "country_name": "French Guiana",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "WF": {
+      "country_name": "Wallis and Futuna",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "DO": {
+      "country_name": "Dominican Republic",
+      "electronic": "DO28BAGR00000001212453611324",
+      "print": "DO28 BAGR 0000 0001 2124 5361 1324"
+    },
+    "DE": { "country_name": "Germany", "electronic": "DE89370400440532013000", "print": "DE89 3704 0044 0532 0130 00" },
+    "TL": {
+      "country_name": "Timor-Leste",
+      "electronic": "TL380080012345678910157",
+      "print": "TL38 0080 0123 4567 8910 157"
+    },
+    "FR": {
+      "country_name": "France",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "RU": {
+      "country_name": "Russia",
+      "electronic": "RU0204452560040702810412345678901",
+      "print": "RU02 0445 2560 0407 0281 0412 3456 7890 1"
+    },
+    "ST": {
+      "country_name": "São Tomé and Príncipe",
+      "electronic": "ST68000100010051845310112",
+      "print": "ST68 0001 0001 0051 8453 1011 2"
+    },
+    "UA": {
+      "country_name": "Ukraine",
+      "electronic": "UA213223130000026007233566001",
+      "print": "UA21 3223 1300 0002 6007 2335 6600 1"
+    },
+    "FI": { "country_name": "Finland", "electronic": "FI2112345600000785", "print": "FI21 1234 5600 0007 85" },
+    "NL": { "country_name": "Netherlands", "electronic": "NL91ABNA0417164300", "print": "NL91 ABNA 0417 1643 00" },
+    "JE": { "country_name": "Jersey", "electronic": "GB29NWBK60161331926819", "print": "GB29 NWBK 6016 1331 9268 19" },
+    "VA": {
+      "country_name": "Vatican City",
+      "electronic": "VA59001123000012345678",
+      "print": "VA59 0011 2300 0012 3456 78"
+    },
+    "IE": { "country_name": "Ireland", "electronic": "IE29AIBK93115212345678", "print": "IE29 AIBK 9311 5212 3456 78" },
+    "RS": { "country_name": "Serbia", "electronic": "RS35260005601001611379", "print": "RS35 2600 0560 1001 6113 79" },
+    "HR": { "country_name": "Croatia", "electronic": "HR1210010051863000160", "print": "HR12 1001 0051 8630 0016 0" },
+    "AX": { "country_name": "Åland Islands", "electronic": "FI2112345600000785", "print": "FI21 1234 5600 0007 85" },
+    "PF": {
+      "country_name": "French Polynesia",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "SC": {
+      "country_name": "Seychelles",
+      "electronic": "SC18SSCB11010000000000001497USD",
+      "print": "SC18 SSCB 1101 0000 0000 0000 1497 USD"
+    },
+    "SE": {
+      "country_name": "Sweden",
+      "electronic": "SE4550000000058398257466",
+      "print": "SE45 5000 0000 0583 9825 7466"
+    },
+    "PK": {
+      "country_name": "Pakistan",
+      "electronic": "PK36SCBL0000001123456702",
+      "print": "PK36 SCBL 0000 0011 2345 6702"
+    },
+    "ME": {
+      "country_name": "Montenegro",
+      "electronic": "ME25505000012345678951",
+      "print": "ME25 5050 0001 2345 6789 51"
+    },
+    "GP": {
+      "country_name": "Guadeloupe",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "GR": {
+      "country_name": "Greece",
+      "electronic": "GR1601101250000000012300695",
+      "print": "GR16 0110 1250 0000 0001 2300 695"
+    },
+    "LB": {
+      "country_name": "Lebanon",
+      "electronic": "LB62099900000001001901229114",
+      "print": "LB62 0999 0000 0001 0019 0122 9114"
+    },
+    "BH": { "country_name": "Bahrain", "electronic": "BH67BMAG00001299123456", "print": "BH67 BMAG 0000 1299 1234 56" },
+    "YT": {
+      "country_name": "Mayotte",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "MU": {
+      "country_name": "Mauritius",
+      "electronic": "MU17BOMM0101101030300200000MUR",
+      "print": "MU17 BOMM 0101 1010 3030 0200 000M UR"
+    },
+    "MQ": {
+      "country_name": "Martinique",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "BA": {
+      "country_name": "Bosnia and Herzegovina",
+      "electronic": "BA391290079401028494",
+      "print": "BA39 1290 0794 0102 8494"
+    },
+    "BI": {
+      "country_name": "Burundi",
+      "electronic": "BI4210000100010000332045181",
+      "print": "BI42 1000 0100 0100 0033 2045 181"
+    },
+    "MT": {
+      "country_name": "Malta",
+      "electronic": "MT84MALT011000012345MTLCAST001S",
+      "print": "MT84 MALT 0110 0001 2345 MTLC AST0 01S"
+    },
+    "JO": {
+      "country_name": "Jordan",
+      "electronic": "JO94CBJO0010000000000131000302",
+      "print": "JO94 CBJO 0010 0000 0000 0131 0003 02"
+    },
+    "GL": { "country_name": "Greenland", "electronic": "GL8964710001000206", "print": "GL89 6471 0001 0002 06" },
+    "LY": {
+      "country_name": "Libya",
+      "electronic": "LY83002048000020100120361",
+      "print": "LY83 0020 4800 0020 1001 2036 1"
+    },
+    "KZ": { "country_name": "Kazakhstan", "electronic": "KZ86125KZT5004100100", "print": "KZ86 125K ZT50 0410 0100" },
+    "MN": { "country_name": "Mongolia", "electronic": "MN121234123456789123", "print": "MN12 1234 1234 5678 9123" },
+    "GT": {
+      "country_name": "Guatemala",
+      "electronic": "GT82TRAJ01020000001210029690",
+      "print": "GT82 TRAJ 0102 0000 0012 1002 9690"
+    },
+    "SD": { "country_name": "Sudan", "electronic": "SD8811123456789012", "print": "SD88 1112 3456 7890 12" },
+    "LV": { "country_name": "Latvia", "electronic": "LV80BANK0000435195001", "print": "LV80 BANK 0000 4351 9500 1" },
+    "BE": { "country_name": "Belgium", "electronic": "BE68539007547034", "print": "BE68 5390 0754 7034" },
+    "NC": {
+      "country_name": "New Caledonia",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "GG": {
+      "country_name": "Guernsey",
+      "electronic": "GB29NWBK60161331926819",
+      "print": "GB29 NWBK 6016 1331 9268 19"
+    },
+    "IM": {
+      "country_name": "Isle of Man",
+      "electronic": "GB29NWBK60161331926819",
+      "print": "GB29 NWBK 6016 1331 9268 19"
+    },
+    "NO": { "country_name": "Norway", "electronic": "NO9386011117947", "print": "NO93 8601 1117 947" },
+    "CZ": {
+      "country_name": "Czechia",
+      "electronic": "CZ6508000000192000145399",
+      "print": "CZ65 0800 0000 1920 0014 5399"
+    },
+    "SI": { "country_name": "Slovenia", "electronic": "SI56263300012039086", "print": "SI56 2633 0001 2039 086" },
+    "LC": {
+      "country_name": "Saint Lucia",
+      "electronic": "LC55HEMM000100010012001200023015",
+      "print": "LC55 HEMM 0001 0001 0012 0012 0002 3015"
+    },
+    "MK": {
+      "country_name": "North Macedonia",
+      "electronic": "MK07250120000058984",
+      "print": "MK07 2501 2000 0058 984"
+    },
+    "HN": {
+      "country_name": "Honduras",
+      "electronic": "HN54PISA00000000000000123124",
+      "print": "HN54 PISA 0000 0000 0000 0012 3124"
+    },
+    "SA": {
+      "country_name": "Saudi Arabia",
+      "electronic": "SA0380000000608010167519",
+      "print": "SA03 8000 0000 6080 1016 7519"
+    },
+    "MD": {
+      "country_name": "Moldova",
+      "electronic": "MD24AG000225100013104168",
+      "print": "MD24 AG00 0225 1000 1310 4168"
+    },
+    "AE": {
+      "country_name": "United Arab Emirates",
+      "electronic": "AE070331234567890123456",
+      "print": "AE07 0331 2345 6789 0123 456"
+    },
+    "IS": {
+      "country_name": "Iceland",
+      "electronic": "IS140159260076545510730339",
+      "print": "IS14 0159 2600 7654 5510 7303 39"
+    },
+    "EE": { "country_name": "Estonia", "electronic": "EE382200221020145685", "print": "EE38 2200 2210 2014 5685" },
+    "KW": {
+      "country_name": "Kuwait",
+      "electronic": "KW81CBKU0000000000001234560101",
+      "print": "KW81 CBKU 0000 0000 0000 1234 5601 01"
+    },
+    "NI": {
+      "country_name": "Nicaragua",
+      "electronic": "NI45BAPR00000013000003558124",
+      "print": "NI45 BAPR 0000 0013 0000 0355 8124"
+    },
+    "IQ": { "country_name": "Iraq", "electronic": "IQ98NBIQ850123456789012", "print": "IQ98 NBIQ 8501 2345 6789 012" },
+    "AD": {
+      "country_name": "Andorra",
+      "electronic": "AD1200012030200359100100",
+      "print": "AD12 0001 2030 2003 5910 0100"
+    },
+    "MC": {
+      "country_name": "Monaco",
+      "electronic": "MC5811222000010123456789030",
+      "print": "MC58 1122 2000 0101 2345 6789 030"
+    },
+    "LU": { "country_name": "Luxembourg", "electronic": "LU280019400644750000", "print": "LU28 0019 4006 4475 0000" },
+    "IL": {
+      "country_name": "Israel",
+      "electronic": "IL620108000000099999999",
+      "print": "IL62 0108 0000 0009 9999 999"
+    },
+    "GB": {
+      "country_name": "United Kingdom",
+      "electronic": "GB29NWBK60161331926819",
+      "print": "GB29 NWBK 6016 1331 9268 19"
+    },
+    "GE": { "country_name": "Georgia", "electronic": "GE29NB0000000101904917", "print": "GE29 NB00 0000 0101 9049 17" },
+    "VG": {
+      "country_name": "British Virgin Islands",
+      "electronic": "VG96VPVG0000012345678901",
+      "print": "VG96 VPVG 0000 0123 4567 8901"
+    },
+    "FK": { "country_name": "Falkland Islands", "electronic": "FK88SC123456789012", "print": "FK88 SC12 3456 7890 12" },
+    "BL": {
+      "country_name": "Saint Barthélemy",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "AL": {
+      "country_name": "Albania",
+      "electronic": "AL47212110090000000235698741",
+      "print": "AL47 2121 1009 0000 0002 3569 8741"
+    },
+    "LT": { "country_name": "Lithuania", "electronic": "LT121000011101001000", "print": "LT12 1000 0111 0100 1000" },
+    "SK": {
+      "country_name": "Slovakia",
+      "electronic": "SK3112000000198742637541",
+      "print": "SK31 1200 0000 1987 4263 7541"
+    },
+    "GI": {
+      "country_name": "Gibraltar",
+      "electronic": "GI75NWBK000000007099453",
+      "print": "GI75 NWBK 0000 0000 7099 453"
+    },
+    "LI": {
+      "country_name": "Liechtenstein",
+      "electronic": "LI21088100002324013AA",
+      "print": "LI21 0881 0000 2324 013A A"
+    },
+    "RE": {
+      "country_name": "Réunion",
+      "electronic": "FR1420041010050500013M02606",
+      "print": "FR14 2004 1010 0505 0001 3M02 606"
+    },
+    "SV": {
+      "country_name": "El Salvador",
+      "electronic": "SV62CENR00000000000000700025",
+      "print": "SV62 CENR 0000 0000 0000 0070 0025"
+    },
+    "AT": { "country_name": "Austria", "electronic": "AT611904300234573201", "print": "AT61 1904 3002 3457 3201" },
+    "OM": { "country_name": "Oman", "electronic": "OM810180000001299123456", "print": "OM81 0180 0000 0129 9123 456" },
+    "PL": {
+      "country_name": "Poland",
+      "electronic": "PL61109010140000071219812874",
+      "print": "PL61 1090 1014 0000 0712 1981 2874"
+    },
+    "TR": {
+      "country_name": "Turkey",
+      "electronic": "TR330006100519786457841326",
+      "print": "TR33 0006 1005 1978 6457 8413 26"
+    },
+    "BY": {
+      "country_name": "Belarus",
+      "electronic": "BY13NBRB3600900000002Z00AB00",
+      "print": "BY13 NBRB 3600 9000 0000 2Z00 AB00"
+    },
+    "AZ": {
+      "country_name": "Azerbaijan",
+      "electronic": "AZ21NABZ00000000137010001944",
+      "print": "AZ21 NABZ 0000 0000 1370 1000 1944"
+    },
+    "HU": {
+      "country_name": "Hungary",
+      "electronic": "HU42117730161111101800000000",
+      "print": "HU42 1177 3016 1111 1018 0000 0000"
+    },
+    "CH": {
+      "country_name": "Switzerland",
+      "electronic": "CH9300762011623852957",
+      "print": "CH93 0076 2011 6238 5295 7"
+    },
+    "MR": {
+      "country_name": "Mauritania",
+      "electronic": "MR1300020001010000123456753",
+      "print": "MR13 0002 0001 0100 0012 3456 753"
+    },
+    "QA": {
+      "country_name": "Qatar",
+      "electronic": "QA58DOHB00001234567890ABCDEFG",
+      "print": "QA58 DOHB 0000 1234 5678 90AB CDEF G"
+    },
+    "YE": {
+      "country_name": "Yemen",
+      "electronic": "YE31CBYE0001000000001234567890",
+      "print": "YE31 CBYE 0001 0000 0000 1234 5678 90"
+    }
+  }
+}
