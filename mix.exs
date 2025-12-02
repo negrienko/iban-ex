@@ -60,7 +60,14 @@ defmodule IbanEx.MixProject do
   defp deps do
     [
       # Checks
+
+      # Dev only
       {:lettuce, "~> 0.3.0", only: :dev},
+      {:elixir_sense, "~> 1.0.0", only: :dev},
+
+      # Dev and test
+      {:req, "~> 0.5", only: ~w(dev test)a, runtime: false},
+      {:floki, "~> 0.36", only: ~w(dev test)a, runtime: false},
       {:ex_check, "~> 0.14.0", only: ~w(dev test)a, runtime: false},
       {:credo, "~> 1.7", only: ~w(dev test)a, runtime: false},
       {:dialyxir, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
@@ -68,8 +75,7 @@ defmodule IbanEx.MixProject do
       {:ex_doc, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:sobelow, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
       {:mix_audit, ">= 0.0.0", only: ~w(dev test)a, runtime: false},
-      {:observer_cli, "~> 1.7.4", only: :dev, runtime: false},
-      {:elixir_sense, "~> 1.0.0", only: :dev}
+      {:observer_cli, "~> 1.7.4", only: :dev, runtime: false}
     ]
   end
 end
