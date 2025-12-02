@@ -97,7 +97,7 @@ defmodule IbanExParserTest do
   test "parsing invalid IBANs from unavailable countries returns {:error, :unsupported_country_code}" do
     invalid_ibans =
       [
-        # Fake country codes (removed SD, GF, AX, BY, DJ, HN, IQ - now supported)
+        # Fake country codes (removed SD, GF, AX, BY, DJ, HN, IQ, LC, ST, TN - now supported)
         "SU56263300012039086",
         "ZZ9121000418450200051332",
         "FU4550000000058398257466",
@@ -123,20 +123,15 @@ defmodule IbanExParserTest do
         "GW31120000001987426375413",
         "IR311200000019874263754137",
         "KM3112000000198742637541375",
-        "LC311200000019874263754",
         "MA31120000001987426375413750",
         "MG3112000000198742637541375",
         "ML31120000001987426375413750",
         "MZ31120000001987426375413",
         "NE31120000001987426375413750",
-        "NI311200000019874263754137500000",
-        "PS311200000019874263754137500",
         "SN31120000001987426375413750",
-        "ST31120000001987426375413",
         "TD3112000000198742637541375",
         "TF3112000000198742637541375",
         "TG31120000001987426375413750",
-        "TN3112000000198742637541",
         "WF3112000000198742637541375",
         "YT3112000000198742637541375"
       ]
