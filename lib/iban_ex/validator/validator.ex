@@ -101,7 +101,7 @@ defmodule IbanEx.Validator do
     |> String.length()
   end
 
-  # - Check whether a given IBAN violates the required format.
+  @doc "Check whether a given IBAN violates the required format."
   @spec iban_violates_format?(String.t() | nil) :: boolean
   def iban_violates_format?(nil), do: true
 
@@ -119,21 +119,21 @@ defmodule IbanEx.Validator do
     has_invalid_chars or country_code_lowercase
   end
 
-  # - Check whether a given IBAN violates the required format in bank_code.
+  @doc "Check whether a given IBAN violates the required format in bank_code."
   @spec iban_violates_bank_code_format?(binary()) :: boolean
   def iban_violates_bank_code_format?(iban), do: iban_violates_bban_part_format?(iban, :bank_code)
 
-  # - Check whether a given IBAN violates the required format in branch_code.
+  @doc "Check whether a given IBAN violates the required format in branch_code."
   @spec iban_violates_branch_code_format?(binary()) :: boolean
   def iban_violates_branch_code_format?(iban),
     do: iban_violates_bban_part_format?(iban, :branch_code)
 
-  # - Check whether a given IBAN violates the required format in account_number.
+  @doc "Check whether a given IBAN violates the required format in account_number."
   @spec iban_violates_account_number_format?(binary()) :: boolean
   def iban_violates_account_number_format?(iban),
     do: iban_violates_bban_part_format?(iban, :account_number)
 
-  # - Check whether a given IBAN violates the required format in national_check.
+  @doc "Check whether a given IBAN violates the required format in national_check."
   @spec iban_violates_national_check_format?(binary()) :: boolean
   def iban_violates_national_check_format?(iban),
     do: iban_violates_bban_part_format?(iban, :national_check)
@@ -150,7 +150,7 @@ defmodule IbanEx.Validator do
     end
   end
 
-  # - Check whether a given IBAN violates the supported countries.
+  @doc "Check whether a given IBAN violates the supported countries."
   @spec iban_unsupported_country?(String.t()) :: boolean
   def iban_unsupported_country?(iban) do
     supported? =

@@ -9,7 +9,7 @@ defmodule IbanEx.Country.Template do
 
   @callback size() :: size()
   @callback rule() :: rule()
-  @callback rules() :: []
+  @callback rules() :: keyword()
   @callback rules_map() :: %{}
   @callback bban_fields() :: [atom()]
   @callback bban_size() :: non_neg_integer()
@@ -66,7 +66,7 @@ defmodule IbanEx.Country.Template do
       def rules_map(), do: rules() |> Map.new()
 
       @impl IbanEx.Country.Template
-      @spec rules() :: []
+      @spec rules() :: keyword()
       def rules() do
         {rules, _bban_size} = calculate_rules()
         rules

@@ -178,7 +178,7 @@ defmodule IbanEx.IbanFactory do
     numeric =
       rearranged
       |> String.graphemes()
-      |> Enum.map(fn char ->
+      |> Enum.map_join(fn char ->
         if char =~ ~r/[A-Z]/ do
           [char_code] = String.to_charlist(char)
           Integer.to_string(char_code - 55)
@@ -186,7 +186,6 @@ defmodule IbanEx.IbanFactory do
           char
         end
       end)
-      |> Enum.join()
 
     # Calculate mod 97
     remainder =

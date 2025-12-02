@@ -1,4 +1,10 @@
 defprotocol IbanEx.Deserialize do
+  @moduledoc """
+  Protocol for converting various data types into IBAN structs.
+
+  Implementations exist for String, Map, and List types.
+  """
+
   @type iban() :: IbanEx.Iban.t()
   @type iban_or_error() ::
           iban()
@@ -15,13 +21,8 @@ end
 defimpl IbanEx.Deserialize, for: [BitString, String] do
   alias IbanEx.{Parser, Error}
   @type iban() :: IbanEx.Iban.t()
-  @type iban_or_error() ::
-          iban()
-          | {:invalid_checksum, binary()}
-          | {:invalid_format, binary()}
-          | {:invalid_length, binary()}
-          | {:can_not_parse_map, binary()}
-          | {:unsupported_country_code, binary()}
+  @type iban_or_error() :: iban() | {atom(), binary()}
+
   def to_iban(string) do
     case Parser.parse(string) do
       {:ok, iban} -> iban

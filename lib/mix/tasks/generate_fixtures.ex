@@ -8,6 +8,8 @@ defmodule Mix.Tasks.GenerateFixtures do
 
   use Mix.Task
 
+  @dialyzer {:nowarn_function, generate_country_specs: 0, get_bban_spec: 1, get_positions: 2}
+
   @shortdoc "Generate test fixture data"
 
   # IBAN examples from SWIFT registry via wise.com
@@ -163,14 +165,14 @@ defmodule Mix.Tasks.GenerateFixtures do
 
   defp generate_country_specs do
     @iban_examples
-    |> Enum.map(fn {code, iban} ->
-      case IbanEx.Parser.parse(iban) do
+    |> Enum.map(fn {code, iban_string} ->
+      case IbanEx.Parser.parse(iban_string) do
         {:ok, parsed} ->
           # Get BBAN and check if numeric only
-          bban = String.slice(iban, 4..-1//1)
+          bban = String.slice(iban_string, 4..-1//1)
           numeric_only = String.match?(bban, ~r/^[0-9]+$/)
 
-          iban_length = String.length(iban)
+          iban_length = String.length(iban_string)
           bban_length = iban_length - 4
           # Use actual country code from parsed IBAN (e.g., FI for AX)
           actual_country_code = parsed.country_code
@@ -184,17 +186,20 @@ defmodule Mix.Tasks.GenerateFixtures do
             "sepa" => code in @sepa_countries,
             "numeric_only" => numeric_only,
             "positions" => %{
-              "bank_code" => get_positions(parsed.bank_code, iban),
-              "branch_code" => get_positions(parsed.branch_code, iban),
-              "account_number" => get_positions(parsed.account_number, iban),
-              "national_check" => get_positions(parsed.national_check, iban)
+              "bank_code" => get_positions(parsed.bank_code, iban_string),
+              "branch_code" => get_positions(parsed.branch_code, iban_string),
+              "account_number" => get_positions(parsed.account_number, iban_string),
+              "national_check" => get_positions(parsed.national_check, iban_string)
             }
           }
 
           {code, spec}
 
-        {:error, reason} ->
-          IO.puts("Warning: Failed to parse #{code} IBAN: #{iban} - #{inspect(reason)}")
+        {:error, error_code} ->
+          IO.puts(
+            "Warning: Failed to parse #{code} IBAN: #{iban_string} - #{inspect(error_code)}"
+          )
+
           nil
       end
     end)
@@ -206,8 +211,7 @@ defmodule Mix.Tasks.GenerateFixtures do
     iban
     |> String.graphemes()
     |> Enum.chunk_every(4)
-    |> Enum.map(&Enum.join/1)
-    |> Enum.join(" ")
+    |> Enum.map_join(" ", &Enum.join/1)
   end
 
   defp country_name(code) do
@@ -338,11 +342,11 @@ defmodule Mix.Tasks.GenerateFixtures do
     }
   end
 
-defp get_positions(nil, _iban), do: %{"start" => 0, "end" => 0}
+  defp get_positions(nil, _iban), do: %{"start" => 0, "end" => 0}
   defp get_positions("", _iban), do: %{"start" => 0, "end" => 0}
 
   defp get_positions(value, iban) do
-# Remove country code and check digits (first 4 chars)
+    # Remove country code and check digits (first 4 chars)
     bban = String.slice(iban, 4..-1//1)
 
     case :binary.match(bban, value) do

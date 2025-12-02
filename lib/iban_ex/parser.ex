@@ -9,17 +9,12 @@ defmodule IbanEx.Parser do
   @type check_digits_string() :: <<_::16>>
 
   @type iban() :: IbanEx.Iban.t()
-  @type iban_or_error() ::
-          {:ok, iban()}
-          | {:invalid_checksum, binary()}
-          | {:invalid_format, binary()}
-          | {:invalid_length, binary()}
-          | {:can_not_parse_map, binary()}
-          | {:unsupported_country_code, binary()}
+  @type iban_or_error() :: {:ok, iban()} | {:error, atom()}
 
   @spec parse({:ok, binary()}) :: iban_or_error()
   def parse({:ok, iban_string}), do: parse(iban_string)
 
+  @spec parse(binary(), keyword()) :: iban_or_error()
   def parse(iban_string, options \\ [incomplete: false])
 
   def parse(iban_string, incomplete: false) do
@@ -70,6 +65,7 @@ defmodule IbanEx.Parser do
   end
 
   @spec parse_bban(binary(), <<_::16>>) :: map()
+  @spec parse_bban(binary(), <<_::16>>, keyword()) :: map()
   def parse_bban(bban_string, country_code, options \\ [incomplete: false])
 
   def parse_bban(bban_string, country_code, incomplete: true) do
