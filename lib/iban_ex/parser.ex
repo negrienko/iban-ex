@@ -108,12 +108,15 @@ defmodule IbanEx.Parser do
       map when is_map(map) ->
         for {key, val} <- map,
             into: %{},
-            do: {String.to_atom(key), val}
+            do: {String.to_atom(key), normalize_empty_to_nil(val)}
 
       nil ->
         %{}
     end
   end
+
+  defp normalize_empty_to_nil(""), do: nil
+  defp normalize_empty_to_nil(val), do: val
 
   @spec country_code(iban_string()) :: country_code_string()
   def country_code(iban_string), do: normalize_and_slice(iban_string, 0..1)
